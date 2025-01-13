@@ -1,0 +1,96 @@
+-- Drop database if it already exists
+DROP DATABASE IF EXISTS sleep_easy_registry;
+
+-- Create the database
+CREATE DATABASE sleep_easy_registry;
+USE sleep_easy_registry;
+
+-- Create Table: Room_Inventory
+CREATE TABLE Room_Inventory (
+    Room_Number INT PRIMARY KEY,
+    Description VARCHAR(255),
+    Type VARCHAR(100),
+    Rate DECIMAL(10, 2),
+    Status VARCHAR(50),
+    Checkin_Date DATE,
+    Checkout_Date DATE
+);
+
+-- Create Table: Registration
+CREATE TABLE Registration (
+    Registration_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Room_Number INT,
+    Lastname VARCHAR(100),
+    Firstname VARCHAR(100),
+    City VARCHAR(100),
+    Payment_Method VARCHAR(50),
+    FOREIGN KEY (Room_Number) REFERENCES Room_Inventory(Room_Number)
+);
+
+-- Create Table: Room_Service
+CREATE TABLE Room_Service (
+    Service_ID INT AUTO_INCREMENT PRIMARY KEY,
+    Room_Number INT,
+    Service_Code INT,
+    Quantity INT,
+    Date DATE,
+    Employee_Number INT,
+    FOREIGN KEY (Room_Number) REFERENCES Room_Inventory(Room_Number)
+);
+
+-- Table: Service
+CREATE TABLE Service (
+    Service_Code INT PRIMARY KEY,
+    Description VARCHAR(255),
+    Price DECIMAL(10, 2),
+    Type VARCHAR(50)
+);
+
+-- Create Table: Staff
+CREATE TABLE Staff (
+    Employee_Number INT PRIMARY KEY,
+    Lastname VARCHAR(100),
+    Firstname VARCHAR(100),
+    Title VARCHAR(100)
+);
+
+-- Create Table: Staff_Authorization
+CREATE TABLE Login (
+    Employee_Number INT PRIMARY KEY,
+    Password VARCHAR(255) NOT NULL,
+    FOREIGN KEY (Employee_Number) REFERENCES Staff(Employee_Number)
+);
+
+-- Insert Data into Room_Inventory
+INSERT INTO Room_Inventory (Room_Number, Description, Type, Rate, Status, Checkin_Date, Checkout_Date) VALUES
+(101, 'Big Room', 'Deluxe', 200.00, 'Available', NULL, NULL),
+(102, 'Room', 'Standard', 150.00, 'Occupied', '2025-01-01', '2025-01-05'),
+(103, 'Room', 'Luxury', 300.00, 'Available', NULL, NULL);
+
+-- Insert Data into Registration
+INSERT INTO Registration (Room_Number, Lastname, Firstname, City, Payment_Method) VALUES
+(102, 'Smith', 'John', 'Toronto', 'Credit Card'),
+(103, 'Doe', 'Jane', 'Vancouver', 'Debit Card');
+
+-- Insert Data into Room_Service
+INSERT INTO Room_Service (Room_Number, Service_Code, Quantity, Date, Employee_Number) VALUES
+(102, 1, 2, '2025-01-02', 1001),
+(102, 2, 1, '2025-01-03', 1002);
+
+-- Insert Data into Service
+INSERT INTO Service (Service_Code, Description, Price, Type) VALUES
+(1, 'Breakfast', 15.00, 'Food'),
+(2, 'Laundry', 20.00, 'Service'),
+(3, 'Spa Treatment', 50.00, 'Wellness');
+
+-- Insert Data into Staff
+INSERT INTO Staff (Employee_Number, Lastname, Firstname, Title) VALUES
+(1001, 'Brown', 'Alice', 'Housekeeper'),
+(1002, 'White', 'Bob', 'Chef'),
+(1003, 'Green', 'Eve', 'Manager');
+
+-- Insert Data into Staff_Authorization
+INSERT INTO Login (Employee_Number, Password) VALUES
+(1001, 'password123'),
+(1002, 'securepass456'),
+(1003, 'manager789');
