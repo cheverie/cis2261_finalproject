@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CIS2261_ProjectDesign.PresentationLayer
+{
+    public partial class frmEditService : Form
+    {
+        public frmEditService()
+        {
+            InitializeComponent();
+        }
+    }
+}
