@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Ocsp;
+using SleepEasyRegistry.DomainLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -79,6 +80,7 @@ namespace SleepEasyRegistry
         /// </summary>
         public void LoadRegistrationData()
         {
+            dataGridReg.Rows.Clear();
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -95,10 +97,15 @@ namespace SleepEasyRegistry
 
                         while (reader.Read())
                         {
+                            // Retrieve the DateTime values and remove the time part using .Date
+                            DateTime checkInDate = Convert.ToDateTime(reader["checkInDate"]).Date;
+                            DateTime checkOutDate = Convert.ToDateTime(reader["checkOutDate"]).Date;
+
+                            // Add the rows to the DataGridView
                             dataGridReg.Rows.Add(
                                 reader["regId"], reader["roomNum"], reader["empId"], reader["roomRate"],
                                 reader["lastName"], reader["firstName"], reader["address"], reader["payMethod"],
-                                reader["currentStatus"], reader["checkInDate"], reader["checkOutDate"],
+                                reader["currentStatus"], checkInDate.ToShortDateString(), checkOutDate.ToShortDateString(),
                                 reader["stayDuration"], reader["costOfStay"], reader["email"], reader["phoneNumber"]
                             );
                         }
@@ -111,49 +118,69 @@ namespace SleepEasyRegistry
             }
         }
 
+
         /// <summary>
         /// Handles deletion of a selected registration record from the database.
         /// </summary>
         private void dataGridReg_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataGridReg.Columns["btnDeleteReg"].Index && e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
-                int regId = Convert.ToInt32(dataGridReg.Rows[e.RowIndex].Cells["colRegId"].Value);
-
-                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                if (result == DialogResult.Yes)
+                if (e.ColumnIndex == dataGridReg.Columns["btnDeleteReg"].Index)
                 {
-                    try
+                    int regId = Convert.ToInt32(dataGridReg.Rows[e.RowIndex].Cells["colRegId"].Value);
+
+                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (result == DialogResult.Yes)
                     {
-                        using (MySqlConnection conn = new MySqlConnection(connectionString))
+                        try
                         {
-                            conn.Open();
-                            string query = "DELETE FROM registration WHERE regId = @regId";
-
-                            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                            using (MySqlConnection conn = new MySqlConnection(connectionString))
                             {
-                                cmd.Parameters.AddWithValue("@regId", regId);
-                                int rowsAffected = cmd.ExecuteNonQuery();
+                                conn.Open();
+                                string query = "DELETE FROM registration WHERE regId = @regId";
 
-                                if (rowsAffected > 0)
+                                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                                 {
-                                    dataGridReg.Rows.RemoveAt(e.RowIndex);
-                                    MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Record not found. It may have already been deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    cmd.Parameters.AddWithValue("@regId", regId);
+                                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                                    if (rowsAffected > 0)
+                                    {
+                                        dataGridReg.Rows.RemoveAt(e.RowIndex);
+                                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Record not found. It may have already been deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                         }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Error deleting record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error deleting record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+                else if (e.ColumnIndex == dataGridReg.Columns["btnEditReg"].Index)
+                {
+                    int regId = Convert.ToInt32(dataGridReg.Rows[e.RowIndex].Cells["colRegId"].Value);
+
+                    // Pass the frmMain reference to the frmEditReg constructor
+                    frmEditReg editForm = new frmEditReg(regId, this);  // Pass 'this' to refer to the current frmMain instance
+                    editForm.ShowDialog(); // Use ShowDialog() for modal behavior
+                }
             }
+        }
+
+        /// <summary>
+        /// Refreshes Registration Datagrid data
+        /// </summary>
+        public void RefreshData()
+        {
+            LoadRegistrationData();  // This will reload the data in the DataGridView.
         }
 
         /// <summary>

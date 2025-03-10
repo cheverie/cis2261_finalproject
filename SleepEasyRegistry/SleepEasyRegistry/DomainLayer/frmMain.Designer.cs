@@ -108,14 +108,14 @@
             // tStripServices
             // 
             this.tStripServices.Name = "tStripServices";
-            this.tStripServices.Size = new System.Drawing.Size(116, 22);
+            this.tStripServices.Size = new System.Drawing.Size(180, 22);
             this.tStripServices.Text = "Services";
             this.tStripServices.Click += new System.EventHandler(this.managementToolStripMenuItem_Click);
             // 
             // tStripStaff
             // 
             this.tStripStaff.Name = "tStripStaff";
-            this.tStripStaff.Size = new System.Drawing.Size(116, 22);
+            this.tStripStaff.Size = new System.Drawing.Size(180, 22);
             this.tStripStaff.Text = "Staff";
             // 
             // tStripReports
@@ -152,6 +152,7 @@
             this.btnAddReg.TabIndex = 7;
             this.btnAddReg.Text = "Add Registration";
             this.btnAddReg.UseVisualStyleBackColor = true;
+            this.btnAddReg.Click += new System.EventHandler(this.btnAddReg_Click);
             // 
             // dataGridReg
             // 
@@ -183,81 +184,98 @@
             this.dataGridReg.Name = "dataGridReg";
             this.dataGridReg.Size = new System.Drawing.Size(1072, 725);
             this.dataGridReg.TabIndex = 6;
+            this.dataGridReg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReg_CellContentClick);
             // 
             // colRegId
             // 
             this.colRegId.HeaderText = "Registration ID";
             this.colRegId.Name = "colRegId";
+            this.colRegId.ReadOnly = true;
             // 
             // colroomNum
             // 
             this.colroomNum.HeaderText = "Room Number";
             this.colroomNum.Name = "colroomNum";
+            this.colroomNum.ReadOnly = true;
             // 
             // colEmpId
             // 
             this.colEmpId.HeaderText = "Employee ID";
             this.colEmpId.Name = "colEmpId";
+            this.colEmpId.ReadOnly = true;
             // 
             // colRoomRate
             // 
             this.colRoomRate.HeaderText = "Room Rate";
             this.colRoomRate.Name = "colRoomRate";
+            this.colRoomRate.ReadOnly = true;
             // 
             // colLastName
             // 
             this.colLastName.HeaderText = "Last Name";
             this.colLastName.Name = "colLastName";
+            this.colLastName.ReadOnly = true;
             // 
             // colFirstName
             // 
             this.colFirstName.HeaderText = "First Name";
             this.colFirstName.Name = "colFirstName";
+            this.colFirstName.ReadOnly = true;
             // 
             // colAddress
             // 
             this.colAddress.HeaderText = "Address";
             this.colAddress.Name = "colAddress";
+            this.colAddress.ReadOnly = true;
             // 
             // colPayMethod
             // 
             this.colPayMethod.HeaderText = "Payment Method";
             this.colPayMethod.Name = "colPayMethod";
+            this.colPayMethod.ReadOnly = true;
             // 
             // colCurrentStatus
             // 
+            this.colCurrentStatus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colCurrentStatus.HeaderText = "Current Status";
             this.colCurrentStatus.Name = "colCurrentStatus";
+            this.colCurrentStatus.ReadOnly = true;
             // 
             // colCheckInDate
             // 
             this.colCheckInDate.HeaderText = "Check-in Date";
             this.colCheckInDate.Name = "colCheckInDate";
+            this.colCheckInDate.ReadOnly = true;
             // 
             // colCheckOutDate
             // 
             this.colCheckOutDate.HeaderText = "Check-Out Date";
             this.colCheckOutDate.Name = "colCheckOutDate";
+            this.colCheckOutDate.ReadOnly = true;
             // 
             // colStayDuration
             // 
             this.colStayDuration.HeaderText = "Stay Duration";
             this.colStayDuration.Name = "colStayDuration";
+            this.colStayDuration.ReadOnly = true;
             // 
             // colCostOfStay
             // 
             this.colCostOfStay.HeaderText = "Cost Of Stay";
             this.colCostOfStay.Name = "colCostOfStay";
+            this.colCostOfStay.ReadOnly = true;
             // 
             // colEmail
             // 
             this.colEmail.HeaderText = "Email";
             this.colEmail.Name = "colEmail";
+            this.colEmail.ReadOnly = true;
             // 
             // colPhoneNumber
             // 
             this.colPhoneNumber.HeaderText = "Phone Number";
             this.colPhoneNumber.Name = "colPhoneNumber";
+            this.colPhoneNumber.ReadOnly = true;
             // 
             // btnEditReg
             // 

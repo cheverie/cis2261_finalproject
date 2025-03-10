@@ -99,11 +99,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\Room.cs" />
-    <Compile Include="DomainLayer\frmRegistration.cs">
+    <Compile Include="DomainLayer\frmEditReg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DomainLayer\frmRegistration.Designer.cs">
-      <DependentUpon>frmRegistration.cs</DependentUpon>
+    <Compile Include="DomainLayer\frmEditReg.Designer.cs">
+      <DependentUpon>frmEditReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainLayer\frmAddReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\frmAddReg.Designer.cs">
+      <DependentUpon>frmAddReg.cs</DependentUpon>
     </Compile>
     <Compile Include="DomainLayer\frmMain.cs">
       <SubType>Form</SubType>
@@ -119,8 +125,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DomainLayer\frmRegistration.resx">
-      <DependentUpon>frmRegistration.cs</DependentUpon>
+    <EmbeddedResource Include="DomainLayer\frmAddReg.resx">
+      <DependentUpon>frmAddReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\frmEditReg.resx">
+      <DependentUpon>frmEditReg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

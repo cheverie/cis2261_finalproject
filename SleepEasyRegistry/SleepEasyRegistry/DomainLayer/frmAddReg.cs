@@ -279,7 +279,7 @@ namespace SleepEasyRegistry
                 cmd.Parameters.AddWithValue("@FirstName", fName);
                 cmd.Parameters.AddWithValue("@Address", address);
                 cmd.Parameters.AddWithValue("@PayMethod", paymentMethod);
-                cmd.Parameters.AddWithValue("@CurrentStatus", "Registered");  // Assuming status is 0 (for available/active)
+                cmd.Parameters.AddWithValue("@CurrentStatus", "Registered");
                 cmd.Parameters.AddWithValue("@CheckInDate", checkInDate);
                 cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
                 cmd.Parameters.AddWithValue("@StayDuration", duration);

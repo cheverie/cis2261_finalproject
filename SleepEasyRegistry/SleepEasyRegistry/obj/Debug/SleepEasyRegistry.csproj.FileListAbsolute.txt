@@ -43,3 +43,4 @@ C:\Users\Nick MacRae\Documents\cis2232\SleepEasyRegistry\SleepEasyRegistry\obj\D
 C:\Users\Nick MacRae\Documents\cis2232\SleepEasyRegistry\SleepEasyRegistry\obj\Debug\SleepEasyRegistry.pdb
 C:\Users\Nick MacRae\Documents\cis2232\SleepEasyRegistry\SleepEasyRegistry\bin\Debug\SleepEasyRegistry.pdb
 C:\Users\Nick MacRae\Documents\cis2232\SleepEasyRegistry\SleepEasyRegistry\obj\Debug\SleepEasyRegistry.frmAddRegistration.resources
+C:\Users\Nick MacRae\Documents\cis2232\SleepEasyRegistry\SleepEasyRegistry\obj\Debug\SleepEasyRegistry.DomainLayer.frmEditReg.resources
