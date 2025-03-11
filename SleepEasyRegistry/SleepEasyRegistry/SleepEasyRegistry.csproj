@@ -123,6 +123,12 @@
     <Compile Include="DomainLayer\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="DomainLayer\frmViewService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\frmViewService.Designer.cs">
+      <DependentUpon>frmViewService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DomainLayer\frmAddReg.resx">
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\frmViewService.resx">
+      <DependentUpon>frmViewService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

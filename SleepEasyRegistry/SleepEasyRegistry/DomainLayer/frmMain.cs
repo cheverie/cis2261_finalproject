@@ -16,7 +16,8 @@ namespace SleepEasyRegistry
     public partial class frmMain : Form
     {
         // Stores the currently logged-in employee's ID
-        public string currentEmpId;
+        public int gAccessLevel;
+        public string gFullName;
 
         // Database connection string
         private readonly string connectionString = "server=localhost;database=sleepeasyregistry;uid=root;pwd=\"\";";
@@ -35,6 +36,8 @@ namespace SleepEasyRegistry
         public void SetCurrentUser(string fullName, int accessLevel)
         {
             txtCurrentUser.Text = $"Welcome, {fullName}";
+            gAccessLevel = accessLevel;
+            gFullName = fullName;
 
             // Hide management menu for users without admin privileges
             if (accessLevel != 2)
@@ -194,7 +197,10 @@ namespace SleepEasyRegistry
 
         private void managementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Future implementation for management features
+            frmViewService serviceForm = new frmViewService();
+            serviceForm.SetCurrentUser(gFullName, gAccessLevel); 
+            serviceForm.Show();
+            
         }
     }
 }
