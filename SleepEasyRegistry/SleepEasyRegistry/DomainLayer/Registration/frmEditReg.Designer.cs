@@ -73,7 +73,7 @@
             this.cmbPayMethod.Location = new System.Drawing.Point(233, 316);
             this.cmbPayMethod.Name = "cmbPayMethod";
             this.cmbPayMethod.Size = new System.Drawing.Size(148, 21);
-            this.cmbPayMethod.TabIndex = 91;
+            this.cmbPayMethod.TabIndex = 5;
             // 
             // txtEmail
             // 
@@ -81,7 +81,7 @@
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(148, 20);
-            this.txtEmail.TabIndex = 90;
+            this.txtEmail.TabIndex = 4;
             // 
             // lblEmail
             // 
@@ -91,7 +91,7 @@
             this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(48, 20);
-            this.lblEmail.TabIndex = 89;
+            this.lblEmail.TabIndex = 19;
             this.lblEmail.Text = "Email";
             // 
             // txtPhoneNumber
@@ -101,7 +101,7 @@
             this.txtPhoneNumber.MaxLength = 10;
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(148, 20);
-            this.txtPhoneNumber.TabIndex = 88;
+            this.txtPhoneNumber.TabIndex = 3;
             // 
             // lblPhoneNum
             // 
@@ -111,7 +111,7 @@
             this.lblPhoneNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPhoneNum.Name = "lblPhoneNum";
             this.lblPhoneNum.Size = new System.Drawing.Size(115, 20);
-            this.lblPhoneNum.TabIndex = 87;
+            this.lblPhoneNum.TabIndex = 18;
             this.lblPhoneNum.Text = "Phone Number";
             // 
             // lblPayMethod
@@ -122,7 +122,7 @@
             this.lblPayMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPayMethod.Name = "lblPayMethod";
             this.lblPayMethod.Size = new System.Drawing.Size(129, 20);
-            this.lblPayMethod.TabIndex = 86;
+            this.lblPayMethod.TabIndex = 20;
             this.lblPayMethod.Text = "Payment Method";
             // 
             // txtRoomRate
@@ -132,7 +132,7 @@
             this.txtRoomRate.Name = "txtRoomRate";
             this.txtRoomRate.ReadOnly = true;
             this.txtRoomRate.Size = new System.Drawing.Size(148, 20);
-            this.txtRoomRate.TabIndex = 85;
+            this.txtRoomRate.TabIndex = 30;
             // 
             // lblRoomRate
             // 
@@ -142,7 +142,7 @@
             this.lblRoomRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomRate.Name = "lblRoomRate";
             this.lblRoomRate.Size = new System.Drawing.Size(95, 20);
-            this.lblRoomRate.TabIndex = 84;
+            this.lblRoomRate.TabIndex = 26;
             this.lblRoomRate.Text = "Room Rate:";
             // 
             // txtRoomType
@@ -152,7 +152,7 @@
             this.txtRoomType.Name = "txtRoomType";
             this.txtRoomType.ReadOnly = true;
             this.txtRoomType.Size = new System.Drawing.Size(148, 20);
-            this.txtRoomType.TabIndex = 83;
+            this.txtRoomType.TabIndex = 29;
             // 
             // lblRoomType
             // 
@@ -162,7 +162,7 @@
             this.lblRoomType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomType.Name = "lblRoomType";
             this.lblRoomType.Size = new System.Drawing.Size(94, 20);
-            this.lblRoomType.TabIndex = 82;
+            this.lblRoomType.TabIndex = 25;
             this.lblRoomType.Text = "Room Type:";
             // 
             // cmbRooms
@@ -171,7 +171,7 @@
             this.cmbRooms.Location = new System.Drawing.Point(192, 561);
             this.cmbRooms.Name = "cmbRooms";
             this.cmbRooms.Size = new System.Drawing.Size(148, 21);
-            this.cmbRooms.TabIndex = 81;
+            this.cmbRooms.TabIndex = 8;
             this.cmbRooms.SelectedIndexChanged += new System.EventHandler(this.cmbRooms_SelectedIndexChanged);
             // 
             // dtpCheckOut
@@ -183,7 +183,8 @@
             this.dtpCheckOut.MinDate = new System.DateTime(2025, 2, 22, 0, 0, 0, 0);
             this.dtpCheckOut.Name = "dtpCheckOut";
             this.dtpCheckOut.Size = new System.Drawing.Size(275, 20);
-            this.dtpCheckOut.TabIndex = 80;
+            this.dtpCheckOut.TabIndex = 7;
+            this.dtpCheckOut.ValueChanged += new System.EventHandler(this.dtpCheckOut_ValueChanged);
             // 
             // lblCheckOut
             // 
@@ -193,7 +194,7 @@
             this.lblCheckOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCheckOut.Name = "lblCheckOut";
             this.lblCheckOut.Size = new System.Drawing.Size(124, 20);
-            this.lblCheckOut.TabIndex = 79;
+            this.lblCheckOut.TabIndex = 23;
             this.lblCheckOut.Text = "Check-Out Date";
             // 
             // lblRoom
@@ -204,7 +205,7 @@
             this.lblRoom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(56, 20);
-            this.lblRoom.TabIndex = 78;
+            this.lblRoom.TabIndex = 24;
             this.lblRoom.Text = "Room:";
             // 
             // dtpCheckIn
@@ -216,7 +217,8 @@
             this.dtpCheckIn.MinDate = new System.DateTime(2010, 2, 22, 0, 0, 0, 0);
             this.dtpCheckIn.Name = "dtpCheckIn";
             this.dtpCheckIn.Size = new System.Drawing.Size(275, 20);
-            this.dtpCheckIn.TabIndex = 77;
+            this.dtpCheckIn.TabIndex = 6;
+            this.dtpCheckIn.ValueChanged += new System.EventHandler(this.dtpCheckIn_ValueChanged);
             // 
             // lblCheckIn
             // 
@@ -226,7 +228,7 @@
             this.lblCheckIn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCheckIn.Name = "lblCheckIn";
             this.lblCheckIn.Size = new System.Drawing.Size(112, 20);
-            this.lblCheckIn.TabIndex = 76;
+            this.lblCheckIn.TabIndex = 22;
             this.lblCheckIn.Text = "Check-In Date";
             // 
             // lblRegHeader
@@ -237,7 +239,7 @@
             this.lblRegHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRegHeader.Name = "lblRegHeader";
             this.lblRegHeader.Size = new System.Drawing.Size(205, 24);
-            this.lblRegHeader.TabIndex = 75;
+            this.lblRegHeader.TabIndex = 21;
             this.lblRegHeader.Text = "Registration Information";
             // 
             // lblGuestHeader
@@ -248,7 +250,7 @@
             this.lblGuestHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGuestHeader.Name = "lblGuestHeader";
             this.lblGuestHeader.Size = new System.Drawing.Size(156, 24);
-            this.lblGuestHeader.TabIndex = 74;
+            this.lblGuestHeader.TabIndex = 14;
             this.lblGuestHeader.Text = "Guest Information";
             // 
             // txtAddress
@@ -257,7 +259,7 @@
             this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(148, 20);
-            this.txtAddress.TabIndex = 73;
+            this.txtAddress.TabIndex = 2;
             // 
             // txtFirstName
             // 
@@ -265,7 +267,7 @@
             this.txtFirstName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(148, 20);
-            this.txtFirstName.TabIndex = 72;
+            this.txtFirstName.TabIndex = 0;
             // 
             // lblAddress
             // 
@@ -275,7 +277,7 @@
             this.lblAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(68, 20);
-            this.lblAddress.TabIndex = 71;
+            this.lblAddress.TabIndex = 17;
             this.lblAddress.Text = "Address";
             // 
             // lblLastName
@@ -286,7 +288,7 @@
             this.lblLastName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(86, 20);
-            this.lblLastName.TabIndex = 70;
+            this.lblLastName.TabIndex = 16;
             this.lblLastName.Text = "Last Name";
             // 
             // lblFirstName
@@ -297,7 +299,7 @@
             this.lblFirstName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(86, 20);
-            this.lblFirstName.TabIndex = 69;
+            this.lblFirstName.TabIndex = 15;
             this.lblFirstName.Text = "First Name";
             // 
             // txtLastName
@@ -306,7 +308,7 @@
             this.txtLastName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(148, 20);
-            this.txtLastName.TabIndex = 68;
+            this.txtLastName.TabIndex = 1;
             // 
             // btnCancel
             // 
@@ -315,7 +317,7 @@
             this.btnCancel.Location = new System.Drawing.Point(292, 776);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(108, 52);
-            this.btnCancel.TabIndex = 93;
+            this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -327,7 +329,7 @@
             this.btnConfirmEdit.Location = new System.Drawing.Point(37, 776);
             this.btnConfirmEdit.Name = "btnConfirmEdit";
             this.btnConfirmEdit.Size = new System.Drawing.Size(108, 52);
-            this.btnConfirmEdit.TabIndex = 92;
+            this.btnConfirmEdit.TabIndex = 10;
             this.btnConfirmEdit.Text = "Confirm Edit";
             this.btnConfirmEdit.UseVisualStyleBackColor = false;
             this.btnConfirmEdit.Click += new System.EventHandler(this.btnConfirmEdit_Click);
@@ -339,9 +341,9 @@
             this.lblcostOfStay.Location = new System.Drawing.Point(33, 674);
             this.lblcostOfStay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcostOfStay.Name = "lblcostOfStay";
-            this.lblcostOfStay.Size = new System.Drawing.Size(136, 20);
-            this.lblcostOfStay.TabIndex = 94;
-            this.lblcostOfStay.Text = "Registration Cost:";
+            this.lblcostOfStay.Size = new System.Drawing.Size(103, 20);
+            this.lblcostOfStay.TabIndex = 27;
+            this.lblcostOfStay.Text = "Cost Of Stay:";
             // 
             // txtCostOfStay
             // 
@@ -350,7 +352,7 @@
             this.txtCostOfStay.Name = "txtCostOfStay";
             this.txtCostOfStay.ReadOnly = true;
             this.txtCostOfStay.Size = new System.Drawing.Size(148, 20);
-            this.txtCostOfStay.TabIndex = 95;
+            this.txtCostOfStay.TabIndex = 31;
             // 
             // cmbStatus
             // 
@@ -362,7 +364,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(192, 710);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(148, 21);
-            this.cmbStatus.TabIndex = 97;
+            this.cmbStatus.TabIndex = 9;
             this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbRooms_SelectedIndexChanged);
             // 
             // lblStatus
@@ -373,7 +375,7 @@
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(150, 20);
-            this.lblStatus.TabIndex = 96;
+            this.lblStatus.TabIndex = 28;
             this.lblStatus.Text = "Registration Status:";
             // 
             // txtRegId
@@ -383,7 +385,7 @@
             this.txtRegId.Name = "txtRegId";
             this.txtRegId.ReadOnly = true;
             this.txtRegId.Size = new System.Drawing.Size(63, 20);
-            this.txtRegId.TabIndex = 99;
+            this.txtRegId.TabIndex = 13;
             // 
             // lblRegId
             // 
@@ -394,7 +396,7 @@
             this.lblRegId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRegId.Name = "lblRegId";
             this.lblRegId.Size = new System.Drawing.Size(122, 22);
-            this.lblRegId.TabIndex = 98;
+            this.lblRegId.TabIndex = 12;
             this.lblRegId.Text = "Registration ID:";
             // 
             // frmEditReg

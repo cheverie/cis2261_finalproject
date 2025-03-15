@@ -99,16 +99,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\Room.cs" />
-    <Compile Include="DomainLayer\frmEditReg.cs">
+    <Compile Include="DomainLayer\Reports\frmAvailabilityReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DomainLayer\frmEditReg.Designer.cs">
+    <Compile Include="DomainLayer\Reports\frmAvailabilityReport.Designer.cs">
+      <DependentUpon>frmAvailabilityReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainLayer\Registration\frmEditReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\Registration\frmEditReg.Designer.cs">
       <DependentUpon>frmEditReg.cs</DependentUpon>
     </Compile>
-    <Compile Include="DomainLayer\frmAddReg.cs">
+    <Compile Include="DomainLayer\Registration\frmAddReg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DomainLayer\frmAddReg.Designer.cs">
+    <Compile Include="DomainLayer\Registration\frmAddReg.Designer.cs">
       <DependentUpon>frmAddReg.cs</DependentUpon>
     </Compile>
     <Compile Include="DomainLayer\frmMain.cs">
@@ -125,10 +131,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DomainLayer\frmAddReg.resx">
+    <EmbeddedResource Include="DomainLayer\Registration\frmAddReg.resx">
       <DependentUpon>frmAddReg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DomainLayer\frmEditReg.resx">
+    <EmbeddedResource Include="DomainLayer\Reports\frmAvailabilityReport.resx">
+      <DependentUpon>frmAvailabilityReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\Registration\frmEditReg.resx">
       <DependentUpon>frmEditReg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\frmMain.resx">
@@ -160,5 +169,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

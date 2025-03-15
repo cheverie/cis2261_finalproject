@@ -290,44 +290,44 @@ WHERE ri.roomNum NOT IN (
 
 
         private void LoadRoomDetails()
-{
-    // Ensure that a selection is made
-    if (cmbRooms.SelectedIndex >= 0)
-    {
-        // Get the selected room number from the combo box
-        int selectedRoomNum = Convert.ToInt32(cmbRooms.SelectedItem);
-
-        // Find the room object corresponding to the selected room number
-        Room selectedRoom = availableRooms.FirstOrDefault(r => r.RoomNum == selectedRoomNum);
-
-        if (selectedRoom != null)
         {
-            // Set the text fields with the corresponding room details
-            txtRoomType.Text = selectedRoom.RoomType;
-            txtRoomRate.Text = selectedRoom.RoomRate.ToString("C"); // Format as currency
+            // Ensure that a selection is made
+            if (cmbRooms.SelectedIndex >= 0)
+            {
+                // Get the selected room number from the combo box
+                int selectedRoomNum = Convert.ToInt32(cmbRooms.SelectedItem);
 
-            // Calculate the number of days between check-in and check-out
-            int daysOfStay = (dtpCheckOut.Value.Date - dtpCheckIn.Value.Date).Days;
+                // Find the room object corresponding to the selected room number
+                Room selectedRoom = availableRooms.FirstOrDefault(r => r.RoomNum == selectedRoomNum);
 
-            if (daysOfStay > 0)
-            {
-                // Calculate the total cost of stay and set it to txtCostOfStay
-                decimal totalCostOfStay = selectedRoom.RoomRate * daysOfStay;
-                txtCostOfStay.Text = totalCostOfStay.ToString("C"); // Format as currency
-            }
-            else if (daysOfStay == 0)
-            {
-                // Handle the case when the check-out date is the same as the check-in date
-                txtCostOfStay.Text = "Stay must be at least 1 day.";
-            }
-            else
-            {
-                // If the check-out date is earlier than the check-in date (for past records)
-                txtCostOfStay.Text = "Check-out date cannot be before check-in date.";
+                if (selectedRoom != null)
+                {
+                    // Set the text fields with the corresponding room details
+                    txtRoomType.Text = selectedRoom.RoomType;
+                    txtRoomRate.Text = selectedRoom.RoomRate.ToString("C"); // Format as currency
+
+                    // Calculate the number of days between check-in and check-out
+                    int daysOfStay = (dtpCheckOut.Value.Date - dtpCheckIn.Value.Date).Days;
+
+                    if (daysOfStay > 0)
+                    {
+                        // Calculate the total cost of stay and set it to txtCostOfStay
+                        decimal totalCostOfStay = selectedRoom.RoomRate * daysOfStay;
+                        txtCostOfStay.Text = totalCostOfStay.ToString("C"); // Format as currency
+                    }
+                    else if (daysOfStay == 0)
+                    {
+                        // Handle the case when the check-out date is the same as the check-in date
+                        txtCostOfStay.Text = "Stay must be at least 1 day.";
+                    }
+                    else
+                    {
+                        // If the check-out date is earlier than the check-in date (for past records)
+                        txtCostOfStay.Text = "Check-out date cannot be before check-in date.";
+                    }
+                }
             }
         }
-    }
-}
 
 
         private void cmbRooms_SelectedIndexChanged(object sender, EventArgs e)
@@ -335,8 +335,8 @@ WHERE ri.roomNum NOT IN (
             // Call the method to load the room details when the selection changes
             LoadRoomDetails();
         }
-       
-       
+
+
 
 
 
@@ -527,6 +527,6 @@ WHERE ri.roomNum NOT IN (
                 }
             }
         }
-            }
-        }
-    
+    }
+}
+

@@ -1,34 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\",
+  "WorkspaceRootPath": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|c:\\users\\nick macrae\\documents\\cis2232\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|s:\\cgi_github\\cis2261_finalproject\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\reports\\frmavailabilityreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\reports\\frmavailabilityreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|s:\\cgi_github\\cis2261_finalproject\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\reports\\frmavailabilityreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\reports\\frmavailabilityreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|c:\\users\\nick macrae\\documents\\cis2232\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|s:\\cgi_github\\cis2261_finalproject\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\registration\\frmaddreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\registration\\frmaddreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|c:\\users\\nick macrae\\documents\\cis2232\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|c:\\users\\nick macrae\\documents\\cis2232\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\frmaddreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmaddreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|s:\\cgi_github\\cis2261_finalproject\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\registration\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\registration\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|s:\\cgi_github\\cis2261_finalproject\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\registration\\frmaddreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\registration\\frmaddreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|s:\\cgi_github\\cis2261_finalproject\\sleepeasyregistry\\sleepeasyregistry\\domainlayer\\registration\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B00F9BB-FB0E-4895-AC6F-1E4379C3541F}|SleepEasyRegistry\\SleepEasyRegistry.csproj|solutionrelative:sleepeasyregistry\\domainlayer\\registration\\frmeditreg.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,49 +54,99 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "frmEditReg.cs",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmEditReg.cs",
-              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmEditReg.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmEditReg.cs",
-              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmEditReg.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAiwCEAAAAAAAAAAAAAAA==",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs",
+              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs",
+              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T18:13:06.742Z",
+              "WhenOpened": "2025-03-13T03:31:53.123Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmAvailabilityReport.cs",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs",
+              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs",
+              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAkwLIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T01:31:43.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmAvailabilityReport.cs [Design]",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs",
+              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs [Design]",
+              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\Reports\\frmAvailabilityReport.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T01:29:57.722Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "frmAddReg.cs",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs",
+              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs",
+              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T00:47:27.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "frmAddReg.cs [Design]",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs",
+              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs [Design]",
+              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\Registration\\frmAddReg.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T20:09:06.831Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "frmEditReg.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmEditReg.cs",
-              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmEditReg.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmEditReg.cs [Design]",
-              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmEditReg.cs [Design]",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs",
+              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs [Design]",
+              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\Registration\\frmEditReg.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-09T22:51:27.309Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "frmMain.cs",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs",
               "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmMain.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs",
               "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmMain.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAkwH0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwC4AAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T19:26:56.611Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "frmMain.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs",
               "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmMain.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs [Design]",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmMain.cs [Design]",
               "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmMain.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-22T17:57:43.32Z",
@@ -93,35 +155,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "frmAddReg.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmAddReg.cs",
-              "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmAddReg.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmAddReg.cs [Design]",
-              "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmAddReg.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T20:09:06.831Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "frmLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
               "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
               "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-22T18:01:15.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "frmLogin.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
+              "DocumentMoniker": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
               "RelativeDocumentMoniker": "SleepEasyRegistry\\DomainLayer\\frmLogin.cs",
-              "ToolTip": "C:\\Users\\Nick MacRae\\Documents\\cis2232\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs [Design]",
+              "ToolTip": "S:\\CGI_GitHub\\cis2261_finalproject\\SleepEasyRegistry\\SleepEasyRegistry\\DomainLayer\\frmLogin.cs [Design]",
               "RelativeToolTip": "SleepEasyRegistry\\DomainLayer\\frmLogin.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T17:51:20.473Z",

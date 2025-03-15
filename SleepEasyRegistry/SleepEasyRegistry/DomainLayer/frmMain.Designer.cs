@@ -67,7 +67,8 @@
             this.txtCurrentUser.Name = "txtCurrentUser";
             this.txtCurrentUser.ReadOnly = true;
             this.txtCurrentUser.Size = new System.Drawing.Size(128, 28);
-            this.txtCurrentUser.TabIndex = 2;
+            this.txtCurrentUser.TabIndex = 4;
+            this.txtCurrentUser.TabStop = false;
             this.txtCurrentUser.Text = "";
             // 
             // btnLogOut
@@ -76,7 +77,7 @@
             this.btnLogOut.Location = new System.Drawing.Point(989, 41);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(101, 30);
-            this.btnLogOut.TabIndex = 4;
+            this.btnLogOut.TabIndex = 2;
             this.btnLogOut.Text = "Log Out";
             this.btnLogOut.UseVisualStyleBackColor = true;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
@@ -89,7 +90,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1102, 25);
-            this.toolStrip1.TabIndex = 5;
+            this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // tStripManagement
@@ -108,14 +109,14 @@
             // tStripServices
             // 
             this.tStripServices.Name = "tStripServices";
-            this.tStripServices.Size = new System.Drawing.Size(180, 22);
+            this.tStripServices.Size = new System.Drawing.Size(116, 22);
             this.tStripServices.Text = "Services";
             this.tStripServices.Click += new System.EventHandler(this.managementToolStripMenuItem_Click);
             // 
             // tStripStaff
             // 
             this.tStripStaff.Name = "tStripStaff";
-            this.tStripStaff.Size = new System.Drawing.Size(180, 22);
+            this.tStripStaff.Size = new System.Drawing.Size(116, 22);
             this.tStripStaff.Text = "Staff";
             // 
             // tStripReports
@@ -134,14 +135,15 @@
             // reportsToolStripMenuItem
             // 
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.reportsToolStripMenuItem.Text = "Report 1";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.reportsToolStripMenuItem.Text = "Availability Report";
+            this.reportsToolStripMenuItem.Click += new System.EventHandler(this.reportsToolStripMenuItem_Click);
             // 
             // report2ToolStripMenuItem
             // 
             this.report2ToolStripMenuItem.Name = "report2ToolStripMenuItem";
-            this.report2ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.report2ToolStripMenuItem.Text = "Report 2";
+            this.report2ToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
+            this.report2ToolStripMenuItem.Text = "Check-Out Bill Report";
             // 
             // btnAddReg
             // 
@@ -149,7 +151,7 @@
             this.btnAddReg.Location = new System.Drawing.Point(433, 43);
             this.btnAddReg.Name = "btnAddReg";
             this.btnAddReg.Size = new System.Drawing.Size(160, 28);
-            this.btnAddReg.TabIndex = 7;
+            this.btnAddReg.TabIndex = 1;
             this.btnAddReg.Text = "Add Registration";
             this.btnAddReg.UseVisualStyleBackColor = true;
             this.btnAddReg.Click += new System.EventHandler(this.btnAddReg_Click);
@@ -183,7 +185,8 @@
             this.dataGridReg.Location = new System.Drawing.Point(18, 77);
             this.dataGridReg.Name = "dataGridReg";
             this.dataGridReg.Size = new System.Drawing.Size(1072, 725);
-            this.dataGridReg.TabIndex = 6;
+            this.dataGridReg.TabIndex = 3;
+            this.dataGridReg.TabStop = false;
             this.dataGridReg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridReg_CellContentClick);
             // 
             // colRegId
