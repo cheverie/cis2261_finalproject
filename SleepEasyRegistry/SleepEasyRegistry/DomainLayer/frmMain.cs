@@ -197,10 +197,10 @@ namespace SleepEasyRegistry
 
         private void managementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmViewService serviceForm = new frmViewService();
+            frmService serviceForm = new frmService();
             serviceForm.SetCurrentUser(gFullName, gAccessLevel); 
             serviceForm.Show();
-            
         }
+        
     }
 }

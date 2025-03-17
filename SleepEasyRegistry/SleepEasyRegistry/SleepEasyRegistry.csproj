@@ -111,6 +111,12 @@
     <Compile Include="DomainLayer\frmAddReg.Designer.cs">
       <DependentUpon>frmAddReg.cs</DependentUpon>
     </Compile>
+    <Compile Include="DomainLayer\frmEditService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\frmEditService.Designer.cs">
+      <DependentUpon>frmEditService.cs</DependentUpon>
+    </Compile>
     <Compile Include="DomainLayer\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,11 +129,11 @@
     <Compile Include="DomainLayer\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="DomainLayer\frmViewService.cs">
+    <Compile Include="DomainLayer\frmService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DomainLayer\frmViewService.Designer.cs">
-      <DependentUpon>frmViewService.cs</DependentUpon>
+    <Compile Include="DomainLayer\frmService.Designer.cs">
+      <DependentUpon>frmService.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,14 +143,17 @@
     <EmbeddedResource Include="DomainLayer\frmEditReg.resx">
       <DependentUpon>frmEditReg.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\frmEditService.resx">
+      <DependentUpon>frmEditService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DomainLayer\frmViewService.resx">
-      <DependentUpon>frmViewService.cs</DependentUpon>
+    <EmbeddedResource Include="DomainLayer\frmService.resx">
+      <DependentUpon>frmService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
