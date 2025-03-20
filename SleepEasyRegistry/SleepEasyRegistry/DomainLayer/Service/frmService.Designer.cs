@@ -129,8 +129,8 @@ namespace SleepEasyRegistry.DomainLayer
             // 
             this.btnDeleteService.HeaderText = "";
             this.btnDeleteService.Name = "btnDeleteService";
-            this.btnDeleteService.Text = "Delete";
-            this.btnDeleteService.ToolTipText = "Delete";
+            this.btnDeleteService.Text = "Remove";
+            this.btnDeleteService.ToolTipText = "Remove";
             this.btnDeleteService.UseColumnTextForButtonValue = true;
             // 
             // frmService

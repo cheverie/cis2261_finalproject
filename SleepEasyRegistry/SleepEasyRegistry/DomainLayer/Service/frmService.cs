@@ -36,7 +36,7 @@ namespace SleepEasyRegistry.DomainLayer
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "select *\nfrom service;";
+                    string query = "select *\nfrom service where availability = 1;";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -82,7 +82,7 @@ namespace SleepEasyRegistry.DomainLayer
         } 
         
         /// <summary>
-        /// Handles deletion of a selected service record from the database.
+        /// Handles removing a selected service record.
         /// </summary>
         private void dataGridService_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -91,8 +91,9 @@ namespace SleepEasyRegistry.DomainLayer
                 if (e.ColumnIndex == dataGridService.Columns["btnDeleteService"].Index)
                 {
                     int serviceId = Convert.ToInt32(dataGridService.Rows[e.RowIndex].Cells["colServiceId"].Value);
+                    int availability = 0;
 
-                    DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult result = MessageBox.Show("Are you sure you want to remove this record?", "Confirm Remove", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     if (result == DialogResult.Yes)
                     {
@@ -101,28 +102,31 @@ namespace SleepEasyRegistry.DomainLayer
                             using (MySqlConnection conn = new MySqlConnection(connectionString))
                             {
                                 conn.Open();
-                                string query = "DELETE FROM service WHERE serviceId = @serviceId";
+                                // Updating availability to not show service instead of deleting
+                                string query = @"UPDATE service SET availability = @availability WHERE serviceId = @serviceId;";
 
                                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                                 {
                                     cmd.Parameters.AddWithValue("@serviceId", serviceId);
+                                    cmd.Parameters.AddWithValue("@availability", availability);
+                                    
                                     int rowsAffected = cmd.ExecuteNonQuery();
 
                                     if (rowsAffected > 0)
                                     {
                                         dataGridService.Rows.RemoveAt(e.RowIndex);
-                                        MessageBox.Show("Record deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show("Record removed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Record not found. It may have already been deleted.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Record not found. It may have already been removed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                             }
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Error deleting record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Error removing record: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -130,9 +134,9 @@ namespace SleepEasyRegistry.DomainLayer
                 {
                     int serviceId = Convert.ToInt32(dataGridService.Rows[e.RowIndex].Cells["colServiceId"].Value);
 
-                    // Pass the frmMain reference to the frmEditReg constructor
-                    frmEditService editForm = new frmEditService(serviceId, this);  // Pass 'this' to refer to the current frmMain instance
-                    editForm.ShowDialog(); // Use ShowDialog() for modal behavior
+                    // Pass the frmService reference to the frmEditService constructor
+                    frmEditService editForm = new frmEditService(serviceId, this); 
+                    editForm.ShowDialog(); 
                 }
             }
         }

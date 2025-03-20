@@ -99,60 +99,60 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessObjects\Room.cs" />
-    <Compile Include="DomainLayer\frmEditReg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DomainLayer\frmEditReg.Designer.cs">
-      <DependentUpon>frmEditReg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DomainLayer\frmAddReg.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DomainLayer\frmAddReg.Designer.cs">
-      <DependentUpon>frmAddReg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DomainLayer\frmEditService.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DomainLayer\frmEditService.Designer.cs">
-      <DependentUpon>frmEditService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DomainLayer\frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DomainLayer\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="DomainLayer\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DomainLayer\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="DomainLayer\frmService.cs">
+    <Compile Include="DomainLayer\Registation\frmAddReg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DomainLayer\frmService.Designer.cs">
+    <Compile Include="DomainLayer\Registation\frmAddReg.Designer.cs">
+      <DependentUpon>frmAddReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainLayer\Registation\frmEditReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\Registation\frmEditReg.Designer.cs">
+      <DependentUpon>frmEditReg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainLayer\Registation\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\Registation\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainLayer\Service\frmEditService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\Service\frmEditService.Designer.cs">
+      <DependentUpon>frmEditService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DomainLayer\Service\frmService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\Service\frmService.Designer.cs">
       <DependentUpon>frmService.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DomainLayer\frmAddReg.resx">
-      <DependentUpon>frmAddReg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DomainLayer\frmEditReg.resx">
-      <DependentUpon>frmEditReg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DomainLayer\frmEditService.resx">
-      <DependentUpon>frmEditService.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DomainLayer\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DomainLayer\frmService.resx">
+    <EmbeddedResource Include="DomainLayer\Registation\frmAddReg.resx">
+      <DependentUpon>frmAddReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\Registation\frmEditReg.resx">
+      <DependentUpon>frmEditReg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\Registation\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\Service\frmEditService.resx">
+      <DependentUpon>frmEditService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\Service\frmService.resx">
       <DependentUpon>frmService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
