@@ -6,12 +6,14 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static SleepEasyRegistry.BusinessObjects.Service;
 
 namespace SleepEasyRegistry.DomainLayer
 {
     public partial class frmEditReg : Form
     {
         private string connectionString = "server=localhost;database=sleepeasyregistry;uid=root;pwd=\"\";";
+        private List<Service> availableServices;
         private List<Room> availableRooms = new List<Room>(); // List to store room information
         private int regId;
         private frmMain _mainForm;
@@ -23,13 +25,6 @@ namespace SleepEasyRegistry.DomainLayer
             this.regId = regId;
             LoadRegistrationDetails();
         }
-
-        private void frmEditReg_Load(object sender, EventArgs e)
-        {
-            PopulateRooms();
-
-        }
-
 
         private void LoadRegistrationDetails()
         {
@@ -70,16 +65,12 @@ namespace SleepEasyRegistry.DomainLayer
                             {
                                 // Disable cmbRooms and show message, but still allow users to edit dates
                                 cmbRooms.Enabled = false;
-                                MessageBox.Show("Passed Check-In and Check-Out date.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                                 // Disable the DateTimePickers for past dates
                                 dtpCheckIn.Enabled = false;
                                 dtpCheckOut.Enabled = false;
                             }
                             else if (checkOutDate < DateTime.Today) // If only check-out date is in the past
                             {
-                                MessageBox.Show("The check-out date is in the past.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                                 // Disable check-out DateTimePicker if the date is in the past
                                 dtpCheckOut.Enabled = false;
                             }
@@ -88,6 +79,8 @@ namespace SleepEasyRegistry.DomainLayer
                                 // Enable both DateTimePickers if dates are not in the past
                                 dtpCheckIn.Enabled = true;
                                 dtpCheckOut.Enabled = true;
+                                dtpCheckIn.MinDate = DateTime.Now;
+                                dtpCheckOut.MinDate = DateTime.Now.AddDays(1);
                             }
 
                             // Handle the status and its effects on the form
@@ -100,6 +93,7 @@ namespace SleepEasyRegistry.DomainLayer
                             {
                                 case "Registered":
                                     cmbStatus.SelectedItem = "Registered";
+                                    btnServiceCharge.Enabled = false;
                                     break;
                                 case "Checked-In":
                                     cmbStatus.SelectedItem = "Checked-In";
@@ -110,6 +104,7 @@ namespace SleepEasyRegistry.DomainLayer
                                     cmbStatus.SelectedItem = "Checked-Out";
                                     cmbStatus.Items.Remove("Registered"); // Remove "Registered" from ComboBox
                                     cmbStatus.Items.Remove("Checked-In"); // Remove "Checked-In" from ComboBox
+                                    btnServiceCharge.Enabled = false;
                                     DisableAllFields();
                                     break;
                                 default:
@@ -383,89 +378,65 @@ WHERE ri.roomNum NOT IN (
 
         private void btnConfirmEdit_Click(object sender, EventArgs e)
         {
-            // Check if the first name is empty
+            List<string> errors = new List<string>();
+
+            // Validate user input
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
-            {
-                MessageBox.Show("First Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("First Name is required.");
 
-            // Check if the last name is empty
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
-            {
-                MessageBox.Show("Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("Last Name is required.");
 
-            // Check if the address is empty
             if (string.IsNullOrWhiteSpace(txtAddress.Text))
-            {
-                MessageBox.Show("Address is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("Address is required.");
 
-            // Check if the phone number is empty or invalid
             if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text) || !IsValidPhoneNumber(txtPhoneNumber.Text))
-            {
-                MessageBox.Show("Please enter a valid Phone Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("Please enter a valid Phone Number.");
 
-            // Check if the email is empty or invalid
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || !IsValidEmail(txtEmail.Text))
-            {
-                MessageBox.Show("Please enter a valid Email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("Please enter a valid Email address.");
 
-            // Get selected room number
-            string roomNumber = cmbRooms.Text;
+            if (cmbPayMethod.SelectedIndex == -1 || string.IsNullOrWhiteSpace(cmbPayMethod.Text))
+                errors.Add("Payment method selection is required.");
 
-            // Access the static variable from frmLogin
-            int empId = frmLogin.CurrentEmpId;  // Accessing the static variable
+            string roomRateText = txtRoomRate.Text.Replace("$", "").Trim();
+            if (!double.TryParse(roomRateText, out double rate))
+                errors.Add("Please enter a valid room rate.");
 
-            string roomRateText = txtRoomRate.Text;
-
-            // Remove the dollar sign ('$') and any other non-numeric characters
-            roomRateText = roomRateText.Replace("$", "").Trim();
-
-            // Try to parse the remaining text as a double
-            double rate;
-            if (!double.TryParse(roomRateText, out rate))
-            {
-                MessageBox.Show("Please enter a valid room rate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Get other form details
-            string fName = txtFirstName.Text;
-            string lName = txtLastName.Text;
-            string address = txtAddress.Text;
-            string paymentMethod = cmbPayMethod.Text;
-
-            // Calculate the duration between check-in and check-out dates
             DateTime checkInDate = dtpCheckIn.Value;
             DateTime checkOutDate = dtpCheckOut.Value;
-            int duration = (checkOutDate - checkInDate).Days;
+            int duration = (checkOutDate - checkInDate).Days + 1;
 
-            // If duration is less than or equal to 0, show an error message
             if (duration <= 0)
+                errors.Add("Check-out date must be later than check-in date.");
+
+            // Check if Service Charge section is enabled
+            if (lblServiceHeader.Enabled) // Assuming fields are enabled when Service Charge is selected
             {
-                MessageBox.Show("Check-out date must be later than check-in date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Validate service charge fields
+                if (cmbServices.SelectedIndex == -1)
+                    errors.Add("Please select a service.");
+
+                if (string.IsNullOrWhiteSpace(txtQuantity.Text) || !int.TryParse(txtQuantity.Text, out int quantity) || quantity <= 0)
+                    errors.Add("Please enter a valid quantity.");
+
+                if (string.IsNullOrWhiteSpace(txtServicePrice.Text) || !double.TryParse(txtServicePrice.Text.Replace("$", "").Trim(), out double servicePrice) || servicePrice <= 0)
+                    errors.Add("Please enter a valid service price.");
+            }
+
+            if (errors.Count > 0)
+            {
+                MessageBox.Show(string.Join("\n", errors), "Validation Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Calculate the cost of stay
+            // Retrieve data for the registration update
+            string roomNumber = cmbRooms.Text;
+            int empId = frmLogin.CurrentEmpId;
             double costOfStay = rate * duration;
+            string phoneNum = txtPhoneNumber.Text.Insert(3, "-").Insert(7, "-");
 
-            // Get email and phone number
-            string email = txtEmail.Text;
-            string phoneNum = txtPhoneNumber.Text;
-            phoneNum = phoneNum.Insert(3, "-").Insert(7, "-");  // Format phone number
-
-            string currentStatus = cmbStatus.Text;
-
-            // Create SQL query to update the record in the registration table
+            // SQL update query for the registration
             string query = @"
     UPDATE registration 
     SET roomNum = @RoomNum,
@@ -483,50 +454,167 @@ WHERE ri.roomNum NOT IN (
         email = @Email,
         phoneNumber = @PhoneNumber
     WHERE regId = @RegId;
-";
+    ";
 
-            // Create MySQL connection and command
+            // Open the database connection and execute the update
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                // Add parameters to the SQL command
                 cmd.Parameters.AddWithValue("@RoomNum", roomNumber);
                 cmd.Parameters.AddWithValue("@EmpId", empId);
                 cmd.Parameters.AddWithValue("@RoomRate", rate);
-                cmd.Parameters.AddWithValue("@LastName", lName);
-                cmd.Parameters.AddWithValue("@FirstName", fName);
-                cmd.Parameters.AddWithValue("@Address", address);
-                cmd.Parameters.AddWithValue("@PayMethod", paymentMethod);
-                cmd.Parameters.AddWithValue("@CurrentStatus", currentStatus);
+                cmd.Parameters.AddWithValue("@LastName", txtLastName.Text);
+                cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
+                cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
+                cmd.Parameters.AddWithValue("@PayMethod", cmbPayMethod.Text);
+                cmd.Parameters.AddWithValue("@CurrentStatus", cmbStatus.Text);
                 cmd.Parameters.AddWithValue("@CheckInDate", checkInDate);
                 cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
                 cmd.Parameters.AddWithValue("@StayDuration", duration);
                 cmd.Parameters.AddWithValue("@CostOfStay", costOfStay);
-                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
                 cmd.Parameters.AddWithValue("@PhoneNumber", phoneNum);
-                cmd.Parameters.AddWithValue("@RegId", regId); // Add the regId to the parameters
+                cmd.Parameters.AddWithValue("@RegId", regId);
 
                 try
                 {
-                    conn.Open(); // Open the MySQL connection
-                    cmd.ExecuteNonQuery(); // Execute the update command
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Registration updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
-                    if (mainForm != null)
+                    // If the Service Charge section is enabled, create a service charge record
+                    if (lblServiceHeader.Enabled)
                     {
-                        mainForm.LoadRegistrationData();
+                        // Retrieve the selected service name from ComboBox
+                        string serviceName = cmbServices.SelectedItem.ToString();
+
+                        // Find the serviceId from availableServices list
+                        Service selectedService = availableServices.FirstOrDefault(s => s.Name == serviceName);
+
+                        if (selectedService != null)
+                        {
+                            int serviceId = selectedService.ServiceId;
+                            double servicePrice = double.Parse(txtServicePrice.Text.Replace("$", "").Trim());
+
+                            // Create service charge record
+                            string serviceChargeQuery = @"
+                    INSERT INTO servicecharge (serviceId, regId, empId, serviceName, servicePrice, date, quantity, total)
+                    VALUES (@ServiceId, @RegId, @EmpId, @ServiceName, @ServicePrice, @Date, @Quantity, @Total);
+                    ";
+
+                            MySqlCommand serviceChargeCmd = new MySqlCommand(serviceChargeQuery, conn);
+                            serviceChargeCmd.Parameters.AddWithValue("@ServiceId", serviceId); // Use the retrieved serviceId
+                            serviceChargeCmd.Parameters.AddWithValue("@RegId", regId);
+                            serviceChargeCmd.Parameters.AddWithValue("@EmpId", empId);
+                            serviceChargeCmd.Parameters.AddWithValue("@ServiceName", serviceName);
+                            serviceChargeCmd.Parameters.AddWithValue("@ServicePrice", servicePrice);
+                            serviceChargeCmd.Parameters.AddWithValue("@Date", DateTime.Now); // Current date
+                            serviceChargeCmd.Parameters.AddWithValue("@Quantity", int.Parse(txtQuantity.Text));
+                            serviceChargeCmd.Parameters.AddWithValue("@Total", servicePrice * int.Parse(txtQuantity.Text));
+
+                            serviceChargeCmd.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Service not found in the available services list.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+
+                    // Refresh the main form data
+                    frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
+                    mainForm?.LoadRegistrationData();
                     _mainForm.RefreshData();
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error: " + ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+
+        private void frmEditReg_Load_1(object sender, EventArgs e)
+        {
+            lblServiceHeader.Enabled = false;
+            lblServivePrice.Enabled = false;
+            lblServiceQuntity.Enabled = false;
+            lblServices.Enabled = false;
+            cmbServices.Enabled = false;
+            txtServicePrice.Enabled = false;
+            txtQuantity.Enabled = false;
+            PopulateAvailableServices();
+
+        }
+
+       
+        private void PopulateAvailableServices()
+        {
+            ServiceManager serviceManager = new ServiceManager(connectionString);
+            availableServices = serviceManager.PopulateAvailableServices(cmbServices);
+
+            if (availableServices.Count > 0)
+            {
+                cmbServices.SelectedIndex = -1; // Unselect ComboBox initially
+            }
+        }
+
+        private void PopulateServiceDetails()
+        {
+            txtServicePrice.Clear();
+            if (cmbServices.SelectedItem != null)
+            {
+                string selectedServiceName = cmbServices.SelectedItem.ToString();
+                Service selectedService = availableServices.FirstOrDefault(s => s.Name == selectedServiceName);
+
+                if (selectedService != null)
+                {
+                    txtServicePrice.Text = selectedService.Price.ToString("C"); // Formats as currency
+                }
+            }
+        }
+
+    private void cmbServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateServiceDetails();
+        }
+
+        private void btnServiceCharge_Click(object sender, EventArgs e)
+        {
+            // Check if the service fields are currently enabled or disabled
+            bool fieldsEnabled = lblServiceHeader.Enabled;
+
+            if (fieldsEnabled)
+            {
+                // Disable fields and update button text
+                lblServiceHeader.Enabled = false;
+                lblServivePrice.Enabled = false;
+                lblServiceQuntity.Enabled = false;
+                lblServices.Enabled = false;
+                cmbServices.Enabled = false;
+                txtServicePrice.Enabled = false;
+                txtQuantity.Enabled = false;
+
+                // Change button text to "Add Service Charge"
+                btnServiceCharge.Text = "Add Service Charge";
+            }
+            else
+            {
+                // Enable fields and update button text
+                lblServiceHeader.Enabled = true;
+                lblServivePrice.Enabled = true;
+                lblServiceQuntity.Enabled = true;
+                lblServices.Enabled = true;
+                cmbServices.Enabled = true;
+                txtServicePrice.Enabled = true;
+                txtQuantity.Enabled = true;
+
+                // Change button text to "Remove Service Charge"
+                btnServiceCharge.Text = "Remove Service Charge";
             }
         }
     }
 }
+
+
 

@@ -60,6 +60,14 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.txtRegId = new System.Windows.Forms.TextBox();
             this.lblRegId = new System.Windows.Forms.Label();
+            this.btnServiceCharge = new System.Windows.Forms.Button();
+            this.lblServices = new System.Windows.Forms.Label();
+            this.cmbServices = new System.Windows.Forms.ComboBox();
+            this.lblServivePrice = new System.Windows.Forms.Label();
+            this.lblServiceQuntity = new System.Windows.Forms.Label();
+            this.txtServicePrice = new System.Windows.Forms.TextBox();
+            this.txtQuantity = new System.Windows.Forms.TextBox();
+            this.lblServiceHeader = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbPayMethod
@@ -118,7 +126,7 @@
             // 
             this.lblPayMethod.AutoSize = true;
             this.lblPayMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPayMethod.Location = new System.Drawing.Point(33, 316);
+            this.lblPayMethod.Location = new System.Drawing.Point(33, 317);
             this.lblPayMethod.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPayMethod.Name = "lblPayMethod";
             this.lblPayMethod.Size = new System.Drawing.Size(129, 20);
@@ -127,7 +135,7 @@
             // 
             // txtRoomRate
             // 
-            this.txtRoomRate.Location = new System.Drawing.Point(192, 635);
+            this.txtRoomRate.Location = new System.Drawing.Point(189, 520);
             this.txtRoomRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRoomRate.Name = "txtRoomRate";
             this.txtRoomRate.ReadOnly = true;
@@ -138,7 +146,7 @@
             // 
             this.lblRoomRate.AutoSize = true;
             this.lblRoomRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomRate.Location = new System.Drawing.Point(33, 635);
+            this.lblRoomRate.Location = new System.Drawing.Point(30, 520);
             this.lblRoomRate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomRate.Name = "lblRoomRate";
             this.lblRoomRate.Size = new System.Drawing.Size(95, 20);
@@ -147,7 +155,7 @@
             // 
             // txtRoomType
             // 
-            this.txtRoomType.Location = new System.Drawing.Point(192, 598);
+            this.txtRoomType.Location = new System.Drawing.Point(189, 483);
             this.txtRoomType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRoomType.Name = "txtRoomType";
             this.txtRoomType.ReadOnly = true;
@@ -158,7 +166,7 @@
             // 
             this.lblRoomType.AutoSize = true;
             this.lblRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoomType.Location = new System.Drawing.Point(33, 598);
+            this.lblRoomType.Location = new System.Drawing.Point(30, 483);
             this.lblRoomType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoomType.Name = "lblRoomType";
             this.lblRoomType.Size = new System.Drawing.Size(94, 20);
@@ -168,7 +176,7 @@
             // cmbRooms
             // 
             this.cmbRooms.FormattingEnabled = true;
-            this.cmbRooms.Location = new System.Drawing.Point(192, 561);
+            this.cmbRooms.Location = new System.Drawing.Point(189, 446);
             this.cmbRooms.Name = "cmbRooms";
             this.cmbRooms.Size = new System.Drawing.Size(148, 21);
             this.cmbRooms.TabIndex = 8;
@@ -179,7 +187,7 @@
             this.dtpCheckOut.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCheckOut.CustomFormat = "yyyy-MM-dd";
             this.dtpCheckOut.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpCheckOut.Location = new System.Drawing.Point(192, 488);
+            this.dtpCheckOut.Location = new System.Drawing.Point(189, 414);
             this.dtpCheckOut.MinDate = new System.DateTime(2025, 2, 22, 0, 0, 0, 0);
             this.dtpCheckOut.Name = "dtpCheckOut";
             this.dtpCheckOut.Size = new System.Drawing.Size(275, 20);
@@ -190,7 +198,7 @@
             // 
             this.lblCheckOut.AutoSize = true;
             this.lblCheckOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckOut.Location = new System.Drawing.Point(33, 492);
+            this.lblCheckOut.Location = new System.Drawing.Point(30, 418);
             this.lblCheckOut.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCheckOut.Name = "lblCheckOut";
             this.lblCheckOut.Size = new System.Drawing.Size(124, 20);
@@ -201,7 +209,7 @@
             // 
             this.lblRoom.AutoSize = true;
             this.lblRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoom.Location = new System.Drawing.Point(33, 562);
+            this.lblRoom.Location = new System.Drawing.Point(30, 447);
             this.lblRoom.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(56, 20);
@@ -213,7 +221,7 @@
             this.dtpCheckIn.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpCheckIn.CustomFormat = "yyyy-MM-dd";
             this.dtpCheckIn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpCheckIn.Location = new System.Drawing.Point(192, 456);
+            this.dtpCheckIn.Location = new System.Drawing.Point(189, 382);
             this.dtpCheckIn.MinDate = new System.DateTime(2010, 2, 22, 0, 0, 0, 0);
             this.dtpCheckIn.Name = "dtpCheckIn";
             this.dtpCheckIn.Size = new System.Drawing.Size(275, 20);
@@ -224,7 +232,7 @@
             // 
             this.lblCheckIn.AutoSize = true;
             this.lblCheckIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCheckIn.Location = new System.Drawing.Point(33, 456);
+            this.lblCheckIn.Location = new System.Drawing.Point(30, 382);
             this.lblCheckIn.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCheckIn.Name = "lblCheckIn";
             this.lblCheckIn.Size = new System.Drawing.Size(112, 20);
@@ -235,7 +243,7 @@
             // 
             this.lblRegHeader.AutoSize = true;
             this.lblRegHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegHeader.Location = new System.Drawing.Point(16, 410);
+            this.lblRegHeader.Location = new System.Drawing.Point(13, 336);
             this.lblRegHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRegHeader.Name = "lblRegHeader";
             this.lblRegHeader.Size = new System.Drawing.Size(205, 24);
@@ -314,7 +322,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.LightGray;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(292, 776);
+            this.btnCancel.Location = new System.Drawing.Point(301, 820);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(108, 52);
             this.btnCancel.TabIndex = 11;
@@ -326,7 +334,7 @@
             // 
             this.btnConfirmEdit.BackColor = System.Drawing.Color.LightGray;
             this.btnConfirmEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmEdit.Location = new System.Drawing.Point(37, 776);
+            this.btnConfirmEdit.Location = new System.Drawing.Point(61, 820);
             this.btnConfirmEdit.Name = "btnConfirmEdit";
             this.btnConfirmEdit.Size = new System.Drawing.Size(108, 52);
             this.btnConfirmEdit.TabIndex = 10;
@@ -338,7 +346,7 @@
             // 
             this.lblcostOfStay.AutoSize = true;
             this.lblcostOfStay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblcostOfStay.Location = new System.Drawing.Point(33, 674);
+            this.lblcostOfStay.Location = new System.Drawing.Point(30, 559);
             this.lblcostOfStay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcostOfStay.Name = "lblcostOfStay";
             this.lblcostOfStay.Size = new System.Drawing.Size(103, 20);
@@ -347,7 +355,7 @@
             // 
             // txtCostOfStay
             // 
-            this.txtCostOfStay.Location = new System.Drawing.Point(192, 674);
+            this.txtCostOfStay.Location = new System.Drawing.Point(189, 559);
             this.txtCostOfStay.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCostOfStay.Name = "txtCostOfStay";
             this.txtCostOfStay.ReadOnly = true;
@@ -361,7 +369,7 @@
             "Registered",
             "Checked-In",
             "Checked-Out"});
-            this.cmbStatus.Location = new System.Drawing.Point(192, 710);
+            this.cmbStatus.Location = new System.Drawing.Point(189, 595);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(148, 21);
             this.cmbStatus.TabIndex = 9;
@@ -371,7 +379,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(33, 711);
+            this.lblStatus.Location = new System.Drawing.Point(30, 596);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(150, 20);
@@ -399,11 +407,101 @@
             this.lblRegId.TabIndex = 12;
             this.lblRegId.Text = "Registration ID:";
             // 
+            // btnServiceCharge
+            // 
+            this.btnServiceCharge.BackColor = System.Drawing.Color.LightGray;
+            this.btnServiceCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServiceCharge.Location = new System.Drawing.Point(187, 828);
+            this.btnServiceCharge.Name = "btnServiceCharge";
+            this.btnServiceCharge.Size = new System.Drawing.Size(98, 37);
+            this.btnServiceCharge.TabIndex = 32;
+            this.btnServiceCharge.Text = "Service Charge";
+            this.btnServiceCharge.UseVisualStyleBackColor = false;
+            this.btnServiceCharge.Click += new System.EventHandler(this.btnServiceCharge_Click);
+            // 
+            // lblServices
+            // 
+            this.lblServices.AutoSize = true;
+            this.lblServices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServices.Location = new System.Drawing.Point(73, 679);
+            this.lblServices.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServices.Name = "lblServices";
+            this.lblServices.Size = new System.Drawing.Size(136, 20);
+            this.lblServices.TabIndex = 33;
+            this.lblServices.Text = "Available Services";
+            // 
+            // cmbServices
+            // 
+            this.cmbServices.FormattingEnabled = true;
+            this.cmbServices.Location = new System.Drawing.Point(229, 681);
+            this.cmbServices.Name = "cmbServices";
+            this.cmbServices.Size = new System.Drawing.Size(148, 21);
+            this.cmbServices.TabIndex = 34;
+            this.cmbServices.SelectedIndexChanged += new System.EventHandler(this.cmbServices_SelectedIndexChanged);
+            // 
+            // lblServivePrice
+            // 
+            this.lblServivePrice.AutoSize = true;
+            this.lblServivePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServivePrice.Location = new System.Drawing.Point(73, 714);
+            this.lblServivePrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServivePrice.Name = "lblServivePrice";
+            this.lblServivePrice.Size = new System.Drawing.Size(100, 20);
+            this.lblServivePrice.TabIndex = 35;
+            this.lblServivePrice.Text = "Service Price";
+            // 
+            // lblServiceQuntity
+            // 
+            this.lblServiceQuntity.AutoSize = true;
+            this.lblServiceQuntity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServiceQuntity.Location = new System.Drawing.Point(73, 747);
+            this.lblServiceQuntity.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServiceQuntity.Name = "lblServiceQuntity";
+            this.lblServiceQuntity.Size = new System.Drawing.Size(68, 20);
+            this.lblServiceQuntity.TabIndex = 36;
+            this.lblServiceQuntity.Text = "Qunatity";
+            // 
+            // txtServicePrice
+            // 
+            this.txtServicePrice.Location = new System.Drawing.Point(229, 716);
+            this.txtServicePrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtServicePrice.Name = "txtServicePrice";
+            this.txtServicePrice.ReadOnly = true;
+            this.txtServicePrice.Size = new System.Drawing.Size(148, 20);
+            this.txtServicePrice.TabIndex = 37;
+            // 
+            // txtQuantity
+            // 
+            this.txtQuantity.Location = new System.Drawing.Point(229, 749);
+            this.txtQuantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtQuantity.Name = "txtQuantity";
+            this.txtQuantity.Size = new System.Drawing.Size(148, 20);
+            this.txtQuantity.TabIndex = 38;
+            // 
+            // lblServiceHeader
+            // 
+            this.lblServiceHeader.AutoSize = true;
+            this.lblServiceHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServiceHeader.Location = new System.Drawing.Point(157, 654);
+            this.lblServiceHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblServiceHeader.Name = "lblServiceHeader";
+            this.lblServiceHeader.Size = new System.Drawing.Size(140, 24);
+            this.lblServiceHeader.TabIndex = 39;
+            this.lblServiceHeader.Text = "Service Charge";
+            // 
             // frmEditReg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 884);
+            this.Controls.Add(this.lblServiceHeader);
+            this.Controls.Add(this.txtQuantity);
+            this.Controls.Add(this.txtServicePrice);
+            this.Controls.Add(this.lblServiceQuntity);
+            this.Controls.Add(this.lblServivePrice);
+            this.Controls.Add(this.cmbServices);
+            this.Controls.Add(this.lblServices);
+            this.Controls.Add(this.btnServiceCharge);
             this.Controls.Add(this.txtRegId);
             this.Controls.Add(this.lblRegId);
             this.Controls.Add(this.cmbStatus);
@@ -438,6 +536,7 @@
             this.Controls.Add(this.txtLastName);
             this.Name = "frmEditReg";
             this.Text = "frmEditReg";
+            this.Load += new System.EventHandler(this.frmEditReg_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,5 +576,13 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.TextBox txtRegId;
         private System.Windows.Forms.Label lblRegId;
+        private System.Windows.Forms.Button btnServiceCharge;
+        private System.Windows.Forms.Label lblServices;
+        private System.Windows.Forms.ComboBox cmbServices;
+        private System.Windows.Forms.Label lblServivePrice;
+        private System.Windows.Forms.Label lblServiceQuntity;
+        private System.Windows.Forms.TextBox txtServicePrice;
+        private System.Windows.Forms.TextBox txtQuantity;
+        private System.Windows.Forms.Label lblServiceHeader;
     }
 }

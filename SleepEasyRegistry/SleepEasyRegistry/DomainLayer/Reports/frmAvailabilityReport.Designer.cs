@@ -260,7 +260,7 @@
             this.txtEmployee.Location = new System.Drawing.Point(36, 235);
             this.txtEmployee.Name = "txtEmployee";
             this.txtEmployee.ReadOnly = true;
-            this.txtEmployee.Size = new System.Drawing.Size(116, 26);
+            this.txtEmployee.Size = new System.Drawing.Size(245, 26);
             this.txtEmployee.TabIndex = 68;
             // 
             // btnGenerateReport

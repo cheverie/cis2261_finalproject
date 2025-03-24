@@ -191,12 +191,6 @@ namespace SleepEasyRegistry
             frmAddRegistration regForm = new frmAddRegistration();
             regForm.Show();
         }
-
-        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Future implementation for management features
-        }
-
         private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAvailabilityReport frmAvailability = new frmAvailabilityReport(txtCurrentUser.Text);

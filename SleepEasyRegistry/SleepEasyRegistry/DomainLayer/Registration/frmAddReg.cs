@@ -234,7 +234,7 @@ namespace SleepEasyRegistry
             // Validate room rate
             string roomRateText = txtRoomRate.Text.Replace("$", "").Trim();
             if (!double.TryParse(roomRateText, out double rate))
-                errors.Add("• Please enter a valid room rate.");
+                errors.Add("• Please select a room.");
 
             // Validate check-in and check-out dates
             DateTime checkInDate = dtpCheckIn.Value.Date;

@@ -91,3 +91,5 @@ S:\CGI_GitHub\cis2261_finalproject\SleepEasyRegistry\SleepEasyRegistry\obj\Debug
 S:\CGI_GitHub\cis2261_finalproject\SleepEasyRegistry\SleepEasyRegistry\obj\Debug\SleepEasyRegistry.exe
 S:\CGI_GitHub\cis2261_finalproject\SleepEasyRegistry\SleepEasyRegistry\obj\Debug\SleepEasyRegistry.pdb
 S:\CGI_GitHub\cis2261_finalproject\SleepEasyRegistry\SleepEasyRegistry\obj\Debug\SleepEasyRegistry.DomainLayer.frmAvailabilityReport.resources
+S:\CGI_GitHub\cis2261_finalproject\SleepEasyRegistry\SleepEasyRegistry\bin\Debug\BCrypt.Net-Next.dll
+S:\CGI_GitHub\cis2261_finalproject\SleepEasyRegistry\SleepEasyRegistry\bin\Debug\BCrypt.Net-Next.xml

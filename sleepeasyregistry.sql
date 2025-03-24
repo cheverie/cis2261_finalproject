@@ -334,9 +334,9 @@ BEGIN
     -- Check if the currentStatus is changed to Checked-Out
     IF NEW.currentStatus = 'Checked-Out' AND OLD.currentStatus != 'Checked-Out' THEN
         
-        -- Calculate the total service charge for the given regId by summing servicePrice * quantity
+        -- Calculate the total service charge for the given regId
         SELECT SUM(servicePrice * quantity) INTO serviceChargeTotal
-        FROM servicecharge
+        FROM charges
         WHERE regId = NEW.regId;
         
         -- Get the total cost of stay from the registration table
@@ -347,12 +347,14 @@ BEGIN
         -- Calculate the total due (service charge + registration total)
         SET totalDue = serviceChargeTotal + regTotal;
         
-        -- Insert a single billing record into the billing table with aggregated values
+        -- Insert the billing record into the billing table
         INSERT INTO billing (regId, chargeId, serviceChargeTotal, regTotal, totalDue)
-        VALUES (NEW.regId, NULL, serviceChargeTotal, regTotal, totalDue);
+        SELECT NEW.regId, chargeId, serviceChargeTotal, regTotal, totalDue
+        FROM charges
+        WHERE regId = NEW.regId
+        LIMIT 1; -- Assuming a single chargeId per registration in the billing table
         
-    END IF;  -- End of the IF statement
-    
+    END IF;
 END $$
 
 DELIMITER ;

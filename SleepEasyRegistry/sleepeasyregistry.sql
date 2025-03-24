@@ -1,4 +1,3 @@
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 --
 DROP DATABASE IF EXISTS sleepeasyregistry;
@@ -196,9 +195,9 @@ CREATE TABLE `staffauth` (
 --
 
 INSERT INTO `staffauth` (`empId`, `empPass`, `accessLevel`) VALUES
-(1, 'password123', 3),
-(2, 'welcome456', 2),
-(3, 'secure789', 1);
+(1, '$2a$13$o5kfwxQxZT9ab/iF1orTrOsoZZcj4uJvuBJqH7XqYqbYbpHBw6xOS', 3),
+(2, '$2a$13$CJVN3SgmUL73OxZdKrkv7uX2ZPwf9nlWh2euNbPGDvMyOwfYzpcFK', 2),
+(3, '$2a$13$d.MGTVLyqY3Rf24DoOZ0O.liREskWRHKZ9hFQ6SYdViNB4ERbrXRa', 2);
 
 --
 -- Indexes for dumped tables
@@ -319,6 +318,7 @@ ALTER TABLE `staffauth`
 --
 -- Billing bill creation trigger
 --
+
 DELIMITER $$
 
 CREATE TRIGGER after_check_out
@@ -333,9 +333,9 @@ BEGIN
     -- Check if the currentStatus is changed to Checked-Out
     IF NEW.currentStatus = 'Checked-Out' AND OLD.currentStatus != 'Checked-Out' THEN
         
-        -- Calculate the total service charge for the given regId
+        -- Calculate the total service charge for the given regId by summing servicePrice * quantity
         SELECT SUM(servicePrice * quantity) INTO serviceChargeTotal
-        FROM charges
+        FROM servicecharge
         WHERE regId = NEW.regId;
         
         -- Get the total cost of stay from the registration table
@@ -346,14 +346,12 @@ BEGIN
         -- Calculate the total due (service charge + registration total)
         SET totalDue = serviceChargeTotal + regTotal;
         
-        -- Insert the billing record into the billing table
+        -- Insert a single billing record into the billing table with aggregated values
         INSERT INTO billing (regId, chargeId, serviceChargeTotal, regTotal, totalDue)
-        SELECT NEW.regId, chargeId, serviceChargeTotal, regTotal, totalDue
-        FROM charges
-        WHERE regId = NEW.regId
-        LIMIT 1; -- Assuming a single chargeId per registration in the billing table
+        VALUES (NEW.regId, NULL, serviceChargeTotal, regTotal, totalDue);
         
-    END IF;
+    END IF;  -- End of the IF statement
+    
 END $$
 
 DELIMITER ;

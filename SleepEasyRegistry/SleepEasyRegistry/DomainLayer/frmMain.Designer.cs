@@ -111,7 +111,6 @@
             this.tStripServices.Name = "tStripServices";
             this.tStripServices.Size = new System.Drawing.Size(116, 22);
             this.tStripServices.Text = "Services";
-            this.tStripServices.Click += new System.EventHandler(this.managementToolStripMenuItem_Click);
             // 
             // tStripStaff
             // 
