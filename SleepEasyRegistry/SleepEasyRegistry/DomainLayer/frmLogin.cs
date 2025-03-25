@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto.Generators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,92 +9,101 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BCrypt.Net;
+
 
 namespace SleepEasyRegistry
 {
     public partial class frmLogin : Form
     {
-        // Static variable to store the current logged-in Employee ID globally
         public static int CurrentEmpId { get; set; }
 
         public frmLogin()
         {
-            InitializeComponent(); // Initializes the login form components
+            InitializeComponent();
         }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            // Event handler for form load (can be used for initialization if needed)
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            // Database connection string (ensure credentials are correct)
             string connectionString = "server=localhost;database=sleepeasyregistry;uid=root;pwd=\"\";";
 
             using (MySqlConnection cnn = new MySqlConnection(connectionString))
             {
                 try
                 {
-                    cnn.Open(); // Open connection to the database
+                    cnn.Open();
 
-                    // Retrieve user input from text fields
                     string empId = txtEmpId.Text.Trim();
                     string empPass = txtPassword.Text.Trim();
 
-                    // Check if fields are empty and notify the user
                     if (string.IsNullOrEmpty(empId) || string.IsNullOrEmpty(empPass))
                     {
-                        MessageBox.Show("Please fill out both Employee ID and Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Exit method to prevent further execution
+                        MessageBox.Show("Please enter both Employee ID and Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
 
-                    // Query to verify employee credentials and get access level
-                    string query = "SELECT accessLevel FROM staffauth WHERE empId = @EmpId AND empPass = @EmpPass;";
+                    // Retrieve hashed password from the database for the given empId
+                    string query = "SELECT empPass, accessLevel FROM staffauth WHERE empId = @EmpId;";
                     using (MySqlCommand cmd = new MySqlCommand(query, cnn))
                     {
-                        // Prevent SQL injection by using parameters
                         cmd.Parameters.AddWithValue("@EmpId", empId);
-                        cmd.Parameters.AddWithValue("@EmpPass", empPass);
 
-                        object result = cmd.ExecuteScalar(); // Execute query and get single value
-
-                        if (result != null) // Check if credentials are valid
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            int accessLevel = Convert.ToInt32(result); // Retrieve access level
-
-                            // Query to get the full name of the user
-                            string nameQuery = "SELECT CONCAT(firstName, ' ', lastName) FROM staff WHERE empId = @EmpId;";
-                            using (MySqlCommand nameCmd = new MySqlCommand(nameQuery, cnn))
+                            if (reader.Read())
                             {
-                                nameCmd.Parameters.AddWithValue("@EmpId", empId);
-                                string fullName = nameCmd.ExecuteScalar()?.ToString() ?? "Unknown User"; // Retrieve user's full name
+                                string storedHashedPassword = reader["empPass"].ToString();
+                                int accessLevel = Convert.ToInt32(reader["accessLevel"]);
 
-                                // Store empId in the static variable for global access
-                                CurrentEmpId = Convert.ToInt32(empId);
+                                // Compare entered password with stored hash
+                                if (BCrypt.Net.BCrypt.EnhancedVerify(empPass, storedHashedPassword))
+                                {
+                                    // Retrieve full name from staff table
+                                    reader.Close(); // Close the first reader before executing another query
 
-                                // Open the main form and pass user information
-                                frmMain mainForm = new frmMain();
-                                mainForm.SetCurrentUser(fullName, accessLevel); // Pass access level and name
-                                mainForm.Show(); // Display the main form
-                                this.Hide(); // Hide the login form after successful login
+                                    string nameQuery = "SELECT CONCAT(firstName, ' ', lastName) FROM staff WHERE empId = @EmpId;";
+                                    using (MySqlCommand nameCmd = new MySqlCommand(nameQuery, cnn))
+                                    {
+                                        nameCmd.Parameters.AddWithValue("@EmpId", empId);
+                                        string fullName = nameCmd.ExecuteScalar()?.ToString() ?? "Unknown User";
+
+                                        // Store empId globally
+                                        CurrentEmpId = Convert.ToInt32(empId);
+
+                                        // Open the main form
+                                        frmMain mainForm = new frmMain();
+                                        mainForm.SetCurrentUser(fullName, accessLevel);
+                                        mainForm.Show();
+                                        this.Hide();
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid Employee ID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    txtEmpId.Clear();
+                                    txtPassword.Clear();
+                                }
                             }
-                        }
-                        else
-                        {
-                            // Display error message for invalid credentials
-                            MessageBox.Show("Invalid Employee ID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtEmpId.Clear(); // Clear input fields
-                            txtPassword.Clear();
+                            else
+                            {
+                                MessageBox.Show("Invalid Employee ID or Password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtEmpId.Clear();
+                                txtPassword.Clear();
+                            }
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Handle and display any database connection or query errors
                     MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            string password = "secure789";
+            string passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13 );
+            txtEmpId.Text = passwordHash;
         }
     }
 }

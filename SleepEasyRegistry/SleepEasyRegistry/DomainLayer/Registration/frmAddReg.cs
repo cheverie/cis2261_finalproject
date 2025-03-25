@@ -23,6 +23,8 @@ namespace SleepEasyRegistry
         public frmAddRegistration()
         {
             InitializeComponent();
+            dtpCheckIn.MinDate = DateTime.Now;
+            dtpCheckOut.MinDate = DateTime.Now.AddDays(1);
         }
 
 
@@ -39,8 +41,15 @@ namespace SleepEasyRegistry
 
         private void PopulateAvailableRooms()
         {
-            cmbAvailableRooms.Items.Clear();  // Clear any previous items
+            // Clear the text fields
+            txtCostOfStay.Clear();
+            txtRoomRate.Clear();
+            txtRoomType.Clear();
+            // Unselect the currently selected item in the combo box
+            cmbAvailableRooms.SelectedIndex = -1;
+
             availableRooms.Clear();  // Clear previous room information
+            cmbAvailableRooms.Items.Clear();  // Clear any previous items
 
             // Get the selected dates from the DateTimePickers
             DateTime checkInDate = dtpCheckIn.Value.Date;
@@ -48,20 +57,20 @@ namespace SleepEasyRegistry
 
             // Query to fetch available rooms
             string query = @"
-        SELECT ri.roomNum, ri.roomDesc, ri.roomType, ri.roomRate
-        FROM roominventory ri
-        WHERE ri.roomNum NOT IN (
-            SELECT r.roomNum
-            FROM registration r
-            WHERE (
-                (r.checkInDate BETWEEN @CheckInDate AND @CheckOutDate) 
-                OR 
-                (r.checkOutDate BETWEEN @CheckInDate AND @CheckOutDate)
-                OR 
-                (r.checkInDate <= @CheckInDate AND r.checkOutDate >= @CheckOutDate)
-            )
-        );
-    ";
+    SELECT ri.roomNum, ri.roomDesc, ri.roomType, ri.roomRate
+    FROM roominventory ri
+    WHERE ri.roomNum NOT IN (
+        SELECT r.roomNum
+        FROM registration r
+        WHERE (
+            (r.checkInDate BETWEEN @CheckInDate AND @CheckOutDate) 
+            OR 
+            (r.checkOutDate BETWEEN @CheckInDate AND @CheckOutDate)
+            OR 
+            (r.checkInDate <= @CheckInDate AND r.checkOutDate >= @CheckOutDate)
+        )
+    );
+";
 
             // Create MySQL connection and command
             using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -125,6 +134,29 @@ namespace SleepEasyRegistry
                     // Set the text fields with the corresponding room details
                     txtRoomType.Text = selectedRoom.RoomType;
                     txtRoomRate.Text = selectedRoom.RoomRate.ToString("C"); // Format as currency
+
+                    // Calculate the length of stay by subtracting the check-in date from the check-out date
+                    DateTime checkInDate = dtpCheckIn.Value;
+                    DateTime checkOutDate = dtpCheckOut.Value;
+                    int lengthOfStay = (checkOutDate.Date - checkInDate.Date).Days;
+
+                    // Ensure the length of stay is a positive number
+                    if (lengthOfStay > 0)
+                    {
+                        // Calculate the total cost (RoomRate * Length of stay)
+                        decimal totalCost = selectedRoom.RoomRate * lengthOfStay;
+
+                        // Set the total cost text field
+                        txtCostOfStay.Text = totalCost.ToString("C"); // Format as currency
+                    }
+                    else
+                    {
+                        MessageBox.Show("Check-out date must be after the check-in date.");
+                        cmbAvailableRooms.SelectedIndex = -1;
+                        txtRoomRate.Clear();
+                        txtRoomType.Clear();
+                        txtCostOfStay.Clear();
+                    }
                 }
             }
         }
@@ -177,101 +209,81 @@ namespace SleepEasyRegistry
 
         private void btnConfirmReg_Click(object sender, EventArgs e)
         {
-            // Check if the first name is empty
+            List<string> errors = new List<string>();
+
+            // Validate first name
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
-            {
-                MessageBox.Show("First Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("• First Name is required.");
 
-            // Check if the last name is empty
+            // Validate last name
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
-            {
-                MessageBox.Show("Last Name is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("• Last Name is required.");
 
-            // Check if the address is empty
+            // Validate address
             if (string.IsNullOrWhiteSpace(txtAddress.Text))
-            {
-                MessageBox.Show("Address is required.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("• Address is required.");
 
-            // Check if the phone number is empty or invalid
+            // Validate phone number
             if (string.IsNullOrWhiteSpace(txtPhoneNumber.Text) || !IsValidPhoneNumber(txtPhoneNumber.Text))
-            {
-                MessageBox.Show("Please enter a valid Phone Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                errors.Add("• Please enter a valid Phone Number.");
 
-            // Check if the email is empty or invalid
+            // Validate email
             if (string.IsNullOrWhiteSpace(txtEmail.Text) || !IsValidEmail(txtEmail.Text))
+                errors.Add("• Please enter a valid Email address.");
+
+            // Validate room rate
+            string roomRateText = txtRoomRate.Text.Replace("$", "").Trim();
+            if (!double.TryParse(roomRateText, out double rate))
+                errors.Add("• Please select a room.");
+
+            // Validate check-in and check-out dates
+            DateTime checkInDate = dtpCheckIn.Value.Date;
+            DateTime checkOutDate = dtpCheckOut.Value.Date;
+            int duration = (checkOutDate - checkInDate).Days + 1;
+
+            if (duration <= 0)
+                errors.Add("• Check-out date must be later than check-in date.");
+
+            // Validate payment method
+            if (cmbPayMethod.SelectedIndex == -1 || string.IsNullOrWhiteSpace(cmbPayMethod.Text))
+                errors.Add("• Payment Method is required.");
+
+            // If there are validation errors, display them and return
+            if (errors.Count > 0)
             {
-                MessageBox.Show("Please enter a valid Email address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Format the error messages
+                string errorMessage = "Missing Fields:\n\n";
+                errorMessage += string.Join("\n", errors);
+
+                // Show the formatted error message in a message box
+                MessageBox.Show(errorMessage, "Validation Errors", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Get selected room number
+            // Proceed with inserting the data into the database
             string roomNumber = cmbAvailableRooms.Text;
+            int empId = frmLogin.CurrentEmpId; // Access static variable
 
-            // Access the static variable from frmLogin
-            int empId = frmLogin.CurrentEmpId;  // Accessing the static variable
-
-            string roomRateText = txtRoomRate.Text;
-
-            // Remove the dollar sign ('$') and any other non-numeric characters
-            roomRateText = roomRateText.Replace("$", "").Trim();
-
-            // Try to parse the remaining text as a double
-            double rate;
-            if (!double.TryParse(roomRateText, out rate))
-            {
-                MessageBox.Show("Please enter a valid room rate.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Get other form details
             string fName = txtFirstName.Text;
             string lName = txtLastName.Text;
             string address = txtAddress.Text;
             string paymentMethod = cmbPayMethod.Text;
 
-            // Calculate the duration between check-in and check-out dates
-            DateTime checkInDate = dtpCheckIn.Value;
-            DateTime checkOutDate = dtpCheckOut.Value;
-            int duration = (checkOutDate - checkInDate).Days;
-
-            // If duration is less than or equal to 0, show an error message
-            if (duration <= 0)
-            {
-                MessageBox.Show("Check-out date must be later than check-in date.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Calculate the cost of stay
             double costOfStay = rate * duration;
-
-            // Get email and phone number
             string email = txtEmail.Text;
             string phoneNum = txtPhoneNumber.Text;
-            phoneNum = phoneNum.Insert(3, "-").Insert(7, "-");  // Format phone number
+            phoneNum = phoneNum.Insert(3, "-").Insert(7, "-"); // Format phone number
 
-
-            // Create SQL query to insert the new record into the registration table
             string query = @"
-        INSERT INTO registration 
-        (roomNum, empId, roomRate, lastName, firstName, address, payMethod, currentStatus, checkInDate, checkOutDate, stayDuration, costOfStay, email, phoneNumber) 
-        VALUES 
-        (@RoomNum, @EmpId, @RoomRate, @LastName, @FirstName, @Address, @PayMethod, @CurrentStatus, @CheckInDate, @CheckOutDate, @StayDuration, @CostOfStay, @Email, @PhoneNumber);
-    ";
+INSERT INTO registration 
+(roomNum, empId, roomRate, lastName, firstName, address, payMethod, currentStatus, checkInDate, checkOutDate, stayDuration, costOfStay, email, phoneNumber) 
+VALUES 
+(@RoomNum, @EmpId, @RoomRate, @LastName, @FirstName, @Address, @PayMethod, @CurrentStatus, @CheckInDate, @CheckOutDate, @StayDuration, @CostOfStay, @Email, @PhoneNumber);
+";
 
-            // Create MySQL connection and command
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                // Add parameters to the SQL command
                 cmd.Parameters.AddWithValue("@RoomNum", roomNumber);
                 cmd.Parameters.AddWithValue("@EmpId", empId);
                 cmd.Parameters.AddWithValue("@RoomRate", rate);
@@ -289,8 +301,8 @@ namespace SleepEasyRegistry
 
                 try
                 {
-                    conn.Open(); // Open the MySQL connection
-                    cmd.ExecuteNonQuery(); // Execute the insert command
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Registration is successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     frmMain mainForm = Application.OpenForms.OfType<frmMain>().FirstOrDefault();
@@ -307,5 +319,7 @@ namespace SleepEasyRegistry
                 }
             }
         }
+
+
     }
-    }
+}

@@ -34,7 +34,7 @@ namespace SleepEasyRegistry
         /// Sets the current user information and adjusts UI visibility based on access level.
         public void SetCurrentUser(string fullName, int accessLevel)
         {
-            txtCurrentUser.Text = $"Welcome, {fullName}";
+            txtCurrentUser.Text = $"{fullName}";
 
             // Hide management menu for users without admin privileges
             if (accessLevel != 2)
@@ -191,10 +191,10 @@ namespace SleepEasyRegistry
             frmAddRegistration regForm = new frmAddRegistration();
             regForm.Show();
         }
-
-        private void managementToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reportsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Future implementation for management features
+            frmAvailabilityReport frmAvailability = new frmAvailabilityReport(txtCurrentUser.Text);
+            frmAvailability.Show();
         }
     }
 }
