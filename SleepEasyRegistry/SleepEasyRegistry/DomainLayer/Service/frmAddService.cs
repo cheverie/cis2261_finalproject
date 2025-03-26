@@ -1,79 +1,36 @@
-﻿using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System;
+﻿using System;
+using System.Windows.Forms;
 using System.Linq;
+using MySql.Data.MySqlClient;
 
 namespace SleepEasyRegistry.DomainLayer
 {
-    public partial class frmEditService : Form
+    public partial class frmAddService : Form
     {
         private string connectionString = "server=localhost;database=sleepeasyregistry;uid=root;pwd=\"\";";
-        private int serviceId;
-        private frmService _serviceForm;
-
-        public frmEditService(int serviceId, frmService serviceForm)
+        
+        public frmAddService()
         {
             InitializeComponent();
-            _serviceForm = serviceForm; // Store the reference to service form
-            this.serviceId = serviceId;
-            // LoadServiceDetails();
         }
 
-        private void frmEditService_Load(object sender, EventArgs e)
-        {
-            LoadServiceDetails();
-
-        }
-
-        private void LoadServiceDetails()
-        {
-            string query = "SELECT * FROM service WHERE serviceId = @serviceId";
-            
-            using (MySqlConnection conn = new MySqlConnection(connectionString))
-            {
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@serviceId", serviceId);
-
-                try
-                {
-                    conn.Open();
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            // Set the registration ID
-                            txtServiceId.Text = serviceId.ToString();
-
-                            txtName.Text = reader["name"].ToString();
-                            txtPrice.Text = reader["price"].ToString();
-                            txtDescription.Text = reader["description"].ToString();
-                            txtType.Text = reader["type"].ToString();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading service details: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        //Cancel button handler
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            // Prompt the user with a confirmation message
             DialogResult result = MessageBox.Show(
                 "You will lose any unsaved changes.",
                 "Cancel",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
+            // If the user confirms (clicks Yes), proceed with closing the form
             if (result == DialogResult.Yes)
             {
                 this.Close();
             }
         }
 
-        private void btnConfirmEdit_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             // Check if the service name is empty
             if (string.IsNullOrWhiteSpace(txtName.Text))
@@ -102,12 +59,26 @@ namespace SleepEasyRegistry.DomainLayer
                 MessageBox.Show("Please enter a valid description.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            
+            if (!rbTrue.Checked && !rbFalse.Checked)
+            {
+                MessageBox.Show("Please select an availability.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            // Get form details
+            // Get other form details
             string name = txtName.Text;
             string type = txtType.Text;
             string description = txtDescription.Text;
             int availability = 1;
+            if (rbFalse.Checked)
+            {
+                availability = 0;
+            }
+            else 
+            {
+                availability = 1;
+            }
             
             string priceText = txtPrice.Text;
 
@@ -121,18 +92,16 @@ namespace SleepEasyRegistry.DomainLayer
                 MessageBox.Show("Please enter a valid price.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            // Create SQL query to update the record in the service table
+            
+            // Create SQL query to insert the new record into the registration table
             string query = @"
-                UPDATE service 
-                SET name = @Name,
-                    price = @Price,
-                    type = @Type,
-                    availability = @Availability,
-                    description = @Description
-                WHERE serviceId = @ServiceId; ";
+                INSERT INTO service 
+                (name, price, type, availability, description) 
+                VALUES 
+                (@Name, @Price, @Type, @Availability, @Description);
+            ";
 
-             // Create MySQL connection and command
+            // Create MySQL connection and command
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -143,22 +112,18 @@ namespace SleepEasyRegistry.DomainLayer
                 cmd.Parameters.AddWithValue("@Type", type);
                 cmd.Parameters.AddWithValue("@Availability", availability);
                 cmd.Parameters.AddWithValue("@Description", description);
-                cmd.Parameters.AddWithValue("@ServiceId", serviceId); 
-            
+
                 try
                 {
-                    // Open the MySQL connection
-                    conn.Open(); 
-                    // Execute the update command
-                    cmd.ExecuteNonQuery(); 
-                    MessageBox.Show("Service updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+                    conn.Open(); // Open the MySQL connection
+                    cmd.ExecuteNonQuery(); // Execute the insert command
+                    MessageBox.Show("Adding Service was successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     frmService serviceForm = Application.OpenForms.OfType<frmService>().FirstOrDefault();
                     if (serviceForm != null)
                     {
                         serviceForm.LoadServiceData();
                     }
-                    _serviceForm.RefreshData();
                     this.Close();
                 }
                 catch (Exception ex)

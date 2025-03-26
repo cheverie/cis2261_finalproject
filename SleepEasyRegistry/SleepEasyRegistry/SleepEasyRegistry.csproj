@@ -123,6 +123,12 @@
     <Compile Include="DomainLayer\Registation\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="DomainLayer\Service\frmAddService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DomainLayer\Service\frmAddService.Designer.cs">
+      <DependentUpon>frmAddService.cs</DependentUpon>
+    </Compile>
     <Compile Include="DomainLayer\Service\frmEditService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\Registation\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DomainLayer\Service\frmAddService.resx">
+      <DependentUpon>frmAddService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DomainLayer\Service\frmEditService.resx">
       <DependentUpon>frmEditService.cs</DependentUpon>

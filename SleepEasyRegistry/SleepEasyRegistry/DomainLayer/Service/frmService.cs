@@ -68,9 +68,13 @@ namespace SleepEasyRegistry.DomainLayer
             gFullName = fullName;
         }
 
+        /// <summary>
+        /// Opens the form to add a new service entry.
+        /// </summary>
         private void btnAddService_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            frmAddService addServiceForm = new frmAddService();
+            addServiceForm.Show();
         }
         
         /// <summary>

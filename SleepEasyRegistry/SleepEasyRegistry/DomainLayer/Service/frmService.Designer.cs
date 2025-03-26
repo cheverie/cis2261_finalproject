@@ -47,22 +47,20 @@ namespace SleepEasyRegistry.DomainLayer
             // 
             // txtCurrentUser
             // 
-            this.txtCurrentUser.Location = new System.Drawing.Point(13, 40);
-            this.txtCurrentUser.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCurrentUser.Location = new System.Drawing.Point(10, 32);
             this.txtCurrentUser.Name = "txtCurrentUser";
             this.txtCurrentUser.ReadOnly = true;
-            this.txtCurrentUser.Size = new System.Drawing.Size(169, 34);
-            this.txtCurrentUser.TabIndex = 3;
+            this.txtCurrentUser.Size = new System.Drawing.Size(128, 28);
+            this.txtCurrentUser.TabIndex = 0;
             this.txtCurrentUser.Text = "";
             // 
             // btnAddService
             // 
             this.btnAddService.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnAddService.Location = new System.Drawing.Point(607, 40);
-            this.btnAddService.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddService.Location = new System.Drawing.Point(455, 32);
             this.btnAddService.Name = "btnAddService";
-            this.btnAddService.Size = new System.Drawing.Size(213, 34);
-            this.btnAddService.TabIndex = 8;
+            this.btnAddService.Size = new System.Drawing.Size(160, 28);
+            this.btnAddService.TabIndex = 1;
             this.btnAddService.Text = "Add Service";
             this.btnAddService.UseVisualStyleBackColor = true;
             this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click);
@@ -74,11 +72,10 @@ namespace SleepEasyRegistry.DomainLayer
             this.dataGridService.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridService.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.colServiceId, this.colName, this.colPrice, this.colType, this.colavailability, this.colDescription, this.btnEditService, this.btnDeleteService });
-            this.dataGridService.Location = new System.Drawing.Point(13, 82);
-            this.dataGridService.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridService.Location = new System.Drawing.Point(10, 67);
             this.dataGridService.Name = "dataGridService";
-            this.dataGridService.Size = new System.Drawing.Size(1432, 420);
-            this.dataGridService.TabIndex = 10;
+            this.dataGridService.Size = new System.Drawing.Size(1074, 341);
+            this.dataGridService.TabIndex = 2;
             this.dataGridService.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridService_CellContentClick);
             // 
             // colServiceId
@@ -135,14 +132,15 @@ namespace SleepEasyRegistry.DomainLayer
             // 
             // frmService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1466, 515);
+            this.ClientSize = new System.Drawing.Size(1100, 418);
             this.Controls.Add(this.dataGridService);
             this.Controls.Add(this.btnAddService);
             this.Controls.Add(this.txtCurrentUser);
             this.Location = new System.Drawing.Point(15, 15);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmService";
             this.Load += new System.EventHandler(this.frmViewService_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridService)).EndInit();
