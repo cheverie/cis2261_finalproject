@@ -109,17 +109,31 @@ WHERE ri.roomNum NOT IN (
                 }
             }
         }
-
+        /// <summary>
+        /// Repopulates Available Rooms when check in is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtpCheckIn_ValueChanged(object sender, EventArgs e)
         {
             PopulateAvailableRooms();
         }
 
+        /// <summary>
+        ///  Repopulates Available Rooms when check out is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dtpCheckOut_ValueChanged(object sender, EventArgs e)
         {
             PopulateAvailableRooms();
         }
 
+        /// <summary>
+        /// Generates the availability report in the downloads folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             try

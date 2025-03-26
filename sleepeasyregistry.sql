@@ -188,9 +188,10 @@ INSERT INTO `staff` (`empId`, `lastName`, `firstName`, `title`) VALUES
 CREATE TABLE `staffauth` (
   `empId` int(11) NOT NULL,
   `empPass` varchar(255) NOT NULL,
-  `accessLevel` int(11) NOT NULL
+  `accessLevel` int(11) NOT NULL,
+  PRIMARY KEY (`empId`),
+  CONSTRAINT `fk_staffauth_staff` FOREIGN KEY (`empId`) REFERENCES `staff`(`empId`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 --
 -- Dumping data for table `staffauth`
 --

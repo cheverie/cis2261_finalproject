@@ -98,12 +98,5 @@ namespace SleepEasyRegistry
                 }
             }
         }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-            string password = "secure789";
-            string passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13 );
-            txtEmpId.Text = passwordHash;
-        }
     }
 }

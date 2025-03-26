@@ -18,6 +18,8 @@ namespace SleepEasyRegistry
         // Stores the currently logged-in employee's ID
         public string currentEmpId;
 
+        private string fullUserName;
+
         // Database connection string
         private readonly string connectionString = "server=localhost;database=sleepeasyregistry;uid=root;pwd=\"\";";
 
@@ -35,7 +37,7 @@ namespace SleepEasyRegistry
         public void SetCurrentUser(string fullName, int accessLevel)
         {
             txtCurrentUser.Text = $"{fullName}";
-
+            fullUserName = fullName;
             // Hide management menu for users without admin privileges
             if (accessLevel != 2)
             {
@@ -169,8 +171,8 @@ namespace SleepEasyRegistry
                     int regId = Convert.ToInt32(dataGridReg.Rows[e.RowIndex].Cells["colRegId"].Value);
 
                     // Pass the frmMain reference to the frmEditReg constructor
-                    frmEditReg editForm = new frmEditReg(regId, this);  // Pass 'this' to refer to the current frmMain instance
-                    editForm.ShowDialog(); // Use ShowDialog() for modal behavior
+                    frmEditReg editForm = new frmEditReg(regId, this);  // Passes curent frmMain instance
+                    editForm.ShowDialog();
                 }
             }
         }
@@ -195,6 +197,20 @@ namespace SleepEasyRegistry
         {
             frmAvailabilityReport frmAvailability = new frmAvailabilityReport(txtCurrentUser.Text);
             frmAvailability.Show();
+        }
+
+        private void tStripServices_Click(object sender, EventArgs e)
+        {
+            frmService frmService = new frmService();
+            frmService.SetCurrentUser(fullUserName);
+            frmService.Show();
+        }
+
+        private void tStripStaff_Click(object sender, EventArgs e)
+        {
+            frmStaff frmStaff = new frmStaff();
+            frmStaff.fullUserName = fullUserName;
+            frmStaff.Show();
         }
     }
 }

@@ -109,14 +109,16 @@
             // tStripServices
             // 
             this.tStripServices.Name = "tStripServices";
-            this.tStripServices.Size = new System.Drawing.Size(116, 22);
+            this.tStripServices.Size = new System.Drawing.Size(180, 22);
             this.tStripServices.Text = "Services";
+            this.tStripServices.Click += new System.EventHandler(this.tStripServices_Click);
             // 
             // tStripStaff
             // 
             this.tStripStaff.Name = "tStripStaff";
-            this.tStripStaff.Size = new System.Drawing.Size(116, 22);
+            this.tStripStaff.Size = new System.Drawing.Size(180, 22);
             this.tStripStaff.Text = "Staff";
+            this.tStripStaff.Click += new System.EventHandler(this.tStripStaff_Click);
             // 
             // tStripReports
             // 

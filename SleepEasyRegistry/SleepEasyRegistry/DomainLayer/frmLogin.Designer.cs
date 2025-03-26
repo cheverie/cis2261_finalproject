@@ -116,7 +116,6 @@
             this.Controls.Add(this.txtEmpId);
             this.Name = "frmLogin";
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
